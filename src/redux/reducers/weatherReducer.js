@@ -1,16 +1,21 @@
-import {SET_WEATHER} from "../actionTypes";
+import {SET_FORECAST, SET_WEATHER} from "../actionTypes";
 
 const INITIAL_STATE = {
-    weather: ""
+    weather: '',
+    forecast: ''
 }
 
 export const weatherReducer = (state = INITIAL_STATE, {type, payload}) => {
     switch (type) {
         case SET_WEATHER:
-            console.log(payload)
             return {
                 ...state,
                 weather: payload
+            }
+        case SET_FORECAST:
+            return {
+                ...state,
+                forecast: payload
             }
         default:
             return {
