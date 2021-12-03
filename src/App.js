@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {getForecast, getWeather} from "./redux/actions/weatherActions";
 import {ZERO_TEMPERATURE} from "./redux/constants";
 
-
 const App = () => {
     const dispatch = useDispatch();
     const {weather, forecast} = useSelector(state => state.weatherStore);
@@ -41,18 +40,29 @@ const App = () => {
     }
 
     return (
-        <div className="App">
-            <input type="text" placeholder="Search" name = "city" value={inputs.city} onChange={changeHandler} />
-            <button
+        <div className="App warm">
+            <main>
+                <div className='searchBox'>
+                    <input
+                        type="text"
+                        className='searchBar'
+                        placeholder="Search..."
+                        name = "city"
+                        value={inputs.city}
+                        onChange={changeHandler}
+                    />
+                </div>
+                <button
                     onClick={() => getWeatherInCity(inputs.city)}
-            >
-                Search
-            </button>
+                >
+                    Search
+                </button>
 
-            {weather.main !== undefined
+                {weather !== undefined && weather.main !== undefined
                 &&
                 <p>Temperature: {(weather.main.temp + ZERO_TEMPERATURE).toFixed(1)}&#176;</p>
-            }
+                }
+            </main>
         </div>
     );
 }
