@@ -8,9 +8,7 @@ const App = () => {
     const dispatch = useDispatch();
     const {weather, forecast} = useSelector(state => state.weatherStore);
     const {error} = useSelector(state => state.errorsStore);
-    const [inputs, setInputs] = useState({
-        city: ""
-    });
+    const [city, setCity] = useState('');
 
     console.log(weather);
     console.log(forecast);
@@ -31,16 +29,22 @@ const App = () => {
 
     const getWeatherInCity = (city) => {
         dispatch(
-            getWeather(city)
+            getWeather(city, setCity)
         )
     }
 
     const changeHandler = (event) => {
-        setInputs(state => ({...state, [event.target.name]: event.target.value}));
+        setCity(event.target.value);
     }
 
     return (
-        <div className="App warm">
+        <div className={
+            weather.main !== undefined
+                ?
+                  (weather.main.temp + ZERO_TEMPERATURE) >16 ? 'App warm': 'App'
+                  :
+                 'App'
+        }>
             <main>
                 <div className='searchBox'>
                     <input
@@ -48,19 +52,30 @@ const App = () => {
                         className='searchBar'
                         placeholder="Search..."
                         name = "city"
-                        value={inputs.city}
+                        value={city}
                         onChange={changeHandler}
+                        onKeyPress={(event) => {
+                            if(event.key !== "Enter") return;
+                            getWeatherInCity(city)}}
                     />
                 </div>
-                <button
-                    onClick={() => getWeatherInCity(inputs.city)}
-                >
-                    Search
-                </button>
 
                 {weather !== undefined && weather.main !== undefined
                 &&
-                <p>Temperature: {(weather.main.temp + ZERO_TEMPERATURE).toFixed(1)}&#176;</p>
+                <>
+                <div className="locationBox">
+                    <div className="location">{weather.name},{weather.sys.country}</div>
+                    <div className="date">{new Date(weather.dt*1000).toLocaleDateString()}</div>
+                </div>
+                <div className="weatherBox">
+                    <div className="temp">
+                        {(weather.main.temp + ZERO_TEMPERATURE).toFixed(1)}&#176;
+                    </div>
+                    <div className="weather">
+                        {weather.weather[0].main}
+                    </div>
+                </div>
+                </>
                 }
             </main>
         </div>

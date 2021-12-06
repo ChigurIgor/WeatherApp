@@ -2,7 +2,7 @@ import axios from "axios";
 import {API_KEY, BASE_URL_ONE_CALL, BASE_URL_WEATHER} from "../constants";
 import {setErrorAction, setForecastAction, setWeatherAction} from "./actions";
 
-export const getWeather = (city) =>{
+export const getWeather = (city, setCity) =>{
     return dispatch => {
         const params = {
             appid: API_KEY,
@@ -14,6 +14,7 @@ export const getWeather = (city) =>{
         };
          axios.get(BASE_URL_WEATHER, {params})
              .then(response=> {
+                 setCity('');
                  dispatch(setWeatherAction(response.data));
              })
              .catch(err => {
