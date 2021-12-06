@@ -11,14 +11,14 @@ body {
 
 .App {
   text-align: center;
-  background-image: url('./assets/night.webp');
+  background-image: url('assets/backgrounds/night.webp');
   background-size: cover;
   background-position: bottom;
   transition: 0.4s ease-out;
 }
 
 .App.warm{
-  background-image: url('./assets/day.webp');
+  background-image: url('assets/backgrounds/day.webp');
 }
 main{
   height: 100vh;
@@ -87,5 +87,8 @@ display: block;
   text-shadow: 3px 3px rgba(50,50,70,0.5);
 }
 
-
+.iconWeather{
+  width: 100px;
+  height: 100px;
+}
 

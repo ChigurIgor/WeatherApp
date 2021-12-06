@@ -3,6 +3,12 @@ import {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getForecast, getWeather} from "./redux/actions/weatherActions";
 import {ZERO_TEMPERATURE} from "./redux/constants";
+import iconSun from "./assets/weatherIcons/sun.png";
+import iconClouds from "./assets/weatherIcons/clouds.png";
+import iconRain from "./assets/weatherIcons/rain.png";
+import iconThunder from "./assets/weatherIcons/thunder.png";
+import iconFog from "./assets/weatherIcons/fog.png";
+import iconSnow from "./assets/weatherIcons/snow.png";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -37,9 +43,41 @@ const App = () => {
         setCity(event.target.value);
     }
 
+    const iconWeather = (weather) => {
+        console.log(weather.main);
+        let link = "";
+        switch (weather.main){
+            case 'Clear':
+                link = iconSun
+                break;
+            case 'Clouds':
+                link = iconClouds
+                break;
+            case 'Rain':
+                (weather.description === "moderate rain") ?
+                link = iconRain
+                    :
+                    link = iconThunder
+                break;
+            case 'Fog':
+                link = iconFog
+                break;
+            case 'Snow':
+                link = iconSnow
+                break;
+            default:
+                link = iconSun
+                break;
+        }
+
+        return (<div className='imageWeather'>
+            <img className='iconWeather' src={link} alt='iconWeather'/>
+        </div>)
+    }
+
     return (
         <div className={
-            weather.main !== undefined
+            weather !== undefined && weather.main !== undefined
                 ?
                   (weather.main.temp + ZERO_TEMPERATURE) >16 ? 'App warm': 'App'
                   :
@@ -74,6 +112,7 @@ const App = () => {
                     <div className="weather">
                         {weather.weather[0].main}
                     </div>
+                    {iconWeather(weather.weather[0])}
                 </div>
                 </>
                 }
