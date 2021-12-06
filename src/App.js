@@ -79,7 +79,9 @@ const App = () => {
         <div className={
             weather !== undefined && weather.main !== undefined
                 ?
-                  (weather.main.temp + ZERO_TEMPERATURE) >16 ? 'App warm': 'App'
+                  (weather.main.temp + ZERO_TEMPERATURE) <= 0 ? 'App cold': (
+                    (weather.main.temp + ZERO_TEMPERATURE) >16 ? 'App warm':'App'
+                  )
                   :
                  'App'
         }>
