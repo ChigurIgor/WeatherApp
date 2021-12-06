@@ -112,8 +112,8 @@ const App = () => {
                     <div className="weather">
                         {weather.weather[0].main}
                     </div>
-                    {iconWeather(weather.weather[0])}
                 </div>
+                    {iconWeather(weather.weather[0])}
                 </>
                 }
             </main>
