@@ -28,7 +28,7 @@ body {
   background-image: linear-gradient(225deg, rgb(11,211,198),rgb(51,196,223), rgb(26,118,194));
 }
 main{
-  height: 100vh;
+  height: 100%;
   /*background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));*/
   padding: 25px;
 }
@@ -108,4 +108,42 @@ display: block;
   top: 100px;
   right: 0;
 }
+.forecastHourly{
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 10 0 auto;
+  flex-wrap: wrap;
+  overflow-x: auto;
+}
 
+.forecastHourly .forecastHourlyItemBox{
+  position: relative;
+  width: 100px;
+  margin: 5px auto;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 15px 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  text-shadow: 1px 2px rgba(50,50,70,0.5);
+  /*text-align: center;*/
+  box-shadow: 1px 2px rgba(0,0,0,0.2);
+}
+
+.forecastHourly .forecastHourlyItemBox .forecastHourlyTemp{
+  font-size: 30px;
+  z-index: 1;
+  position: relative;
+}
+.forecastHourly .forecastHourlyItemBox .forecastHourlyWeather .iconWeather{
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top:30%;
+  right: 0;
+  z-index: 0;
+
+}

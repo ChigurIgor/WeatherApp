@@ -44,7 +44,6 @@ const App = () => {
     }
 
     const iconWeather = (weather) => {
-        console.log(weather.main);
         let link = "";
         switch (weather.main){
             case 'Clear':
@@ -75,6 +74,29 @@ const App = () => {
         </div>)
     }
 
+    const forecastHourly = (forecast) => {
+        let hourly = forecast.hourly.slice(0, 24);
+
+        return (
+            <div className="forecastHourly">
+                {hourly.map(item =>
+                    <div className='forecastHourlyItemBox' key = {item.dt}>
+                        <div className="forecastHourlyTime">
+                            {new Date(item.dt*1000).getHours()}:00
+                        </div>
+                        <div className='forecastHourlyTemp'>
+                            {(item.temp+ZERO_TEMPERATURE).toFixed(1)}&#176;
+                        </div>
+                        <div className='forecastHourlyWeather'>
+                            {/*{item.weather[0].main}*/}
+                            {iconWeather(item.weather[0])}
+                        </div>
+
+                    </div>)
+                }
+            </div>
+        )
+    }
     return (
         <div className={
             weather !== undefined && weather.main !== undefined
@@ -116,6 +138,12 @@ const App = () => {
                     </div>
                 </div>
                     {iconWeather(weather.weather[0])}
+                    {forecast !== undefined && forecast.hourly !== undefined &&
+                       <>
+                           {forecastHourly(forecast)}
+                       </>
+                    }
+
                 </>
                 }
             </main>
