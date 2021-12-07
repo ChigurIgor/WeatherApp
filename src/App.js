@@ -97,6 +97,29 @@ const App = () => {
             </div>
         )
     }
+
+    const forecastDaily = (forecast) => {
+        let daily = forecast.daily;
+
+        return (
+            <div className="forecastDaily">
+                {daily.map(item =>
+                    <div className='forecastDailyItemBox' key = {item.dt}>
+                        <div className="forecastDailyTime">
+                            {new Date(item.dt*1000).getDate()}.{new Date(item.dt*1000).getMonth()}
+                        </div>
+                        <div className='forecastDailyTemp'>
+                            {(item.temp.night+ZERO_TEMPERATURE).toFixed(1)}&#176;  {(item.temp.day+ZERO_TEMPERATURE).toFixed(1)}&#176;
+                        </div>
+                        <div className='forecastDailyWeather'>
+                            {/*{item.weather[0].main}*/}
+                            {iconWeather(item.weather[0])}
+                        </div>
+                    </div>)
+                }
+            </div>
+        )
+    }
     return (
         <div className={
             weather !== undefined && weather.main !== undefined
@@ -142,6 +165,11 @@ const App = () => {
                        <>
                            {forecastHourly(forecast)}
                        </>
+                    }
+                    {forecast !== undefined && forecast.daily !== undefined &&
+                    <>
+                        {forecastDaily(forecast)}
+                    </>
                     }
 
                 </>
