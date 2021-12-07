@@ -85,7 +85,7 @@ const App = () => {
                             {new Date(item.dt*1000).getHours()}:00
                         </div>
                         <div className='forecastHourlyTemp'>
-                            {(item.temp+ZERO_TEMPERATURE).toFixed(1)}&#176;
+                            {Math.round((item.temp+ZERO_TEMPERATURE))}&#176;
                         </div>
                         <div className='forecastHourlyWeather'>
                             {/*{item.weather[0].main}*/}
@@ -109,7 +109,7 @@ const App = () => {
                             {new Date(item.dt*1000).getDate()}.{new Date(item.dt*1000).getMonth()}
                         </div>
                         <div className='forecastDailyTemp'>
-                            {(item.temp.night+ZERO_TEMPERATURE).toFixed(1)}&#176;  {(item.temp.day+ZERO_TEMPERATURE).toFixed(1)}&#176;
+                            {Math.round((item.temp.night+ZERO_TEMPERATURE))}&#176;  {Math.round((item.temp.day+ZERO_TEMPERATURE))}&#176;
                         </div>
                         <div className='forecastDailyWeather'>
                             {/*{item.weather[0].main}*/}
@@ -154,7 +154,7 @@ const App = () => {
                 </div>
                 <div className="weatherBox">
                     <div className="temp">
-                        {(weather.main.temp + ZERO_TEMPERATURE).toFixed(1)}&#176;
+                        {Math.round((weather.main.temp + ZERO_TEMPERATURE))}&#176;
                     </div>
                     <div className="weather">
                         {weather.weather[0].main}
