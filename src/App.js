@@ -9,6 +9,7 @@ import iconRain from "./assets/weatherIcons/rain.png";
 import iconThunder from "./assets/weatherIcons/thunder.png";
 import iconFog from "./assets/weatherIcons/fog.png";
 import iconSnow from "./assets/weatherIcons/snow.png";
+import NavbarComponent from "./components/navbar/NavbarComponent";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -130,6 +131,7 @@ const App = () => {
                   :
                  'App'
         }>
+            <NavbarComponent/>
             <main>
                 <div className='searchBox'>
                     <input
