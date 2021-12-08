@@ -9,7 +9,7 @@ body {
   font-family: 'monseratt', sans-serif;
 }
 
-.App {
+.mainContainer {
   text-align: center;
   /*background-image: url('assets/backgrounds/night.webp');*/
   background-image: linear-gradient(225deg, rgb(226,226,226),rgb(197,197,197), rgb(107,107,107));
@@ -19,11 +19,11 @@ body {
   position: relative;
 }
 
-.App.warm{
+.mainContainer.warm{
   /*background-image: url('assets/backgrounds/day.webp');*/
   background-image: linear-gradient(225deg, rgb(249,218,30), rgb(249,196,40),  rgb(241,92,33));
 }
-.App.cold{
+.mainContainer.cold{
   /*background-image: url('assets/backgrounds/day.webp');*/
   background-image: linear-gradient(225deg, rgb(11,211,198),rgb(51,196,223), rgb(26,118,194));
 }
