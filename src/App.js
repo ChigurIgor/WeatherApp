@@ -3,7 +3,7 @@ import 'dayjs/locale/de';
 import NavbarComponent from "./components/navbar/NavbarComponent";
 import {
     Route,
-    Routes,
+    Switch,
 } from "react-router-dom"
 import FavouritesComponent from "./components/favourites/FavouritesComponent";
 import CurrentWeatherComponent from "./components/currentWeather/CurrentWeatherComponent";
@@ -12,11 +12,13 @@ const App = () => {
 
     return (
         <div className='App'>
+
             <NavbarComponent/>
-            <Routes >
-              <Route path="/" element={<CurrentWeatherComponent/>}/>
-              <Route path="/favourites" element={<FavouritesComponent/>} />
-            </Routes >
+            <Switch >
+
+                <Route path="/" exact component={CurrentWeatherComponent}/>
+              <Route path="/favourites" component={FavouritesComponent} />
+            </Switch >
         </div>
     );
 }
