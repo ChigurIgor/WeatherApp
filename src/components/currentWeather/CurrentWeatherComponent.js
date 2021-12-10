@@ -8,22 +8,32 @@ import iconSnow from "../../assets/weatherIcons/snow.png";
 import {useEffect, useState} from "react";
 import {getForecast, getWeather} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
+import {getCurrentLocation} from "../../redux/actions/locationActions";
 
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
     const {weather, forecast} = useSelector(state => state.weatherStore);
+    const {location} = useSelector(state => state.locationStore);
     const {error} = useSelector(state => state.errorsStore);
     const [city, setCity] = useState('');
 
     console.log(weather);
     console.log(forecast);
     console.log(error);
+    console.log(location);
+
+
 
     useEffect(() => {
         dispatch(
             getForecast(weather)
         )
     }, [dispatch, weather])
+    useEffect(() => {
+        dispatch(
+            getCurrentLocation()
+        )
+    }, [dispatch])
 
     const getWeatherInCity = (city) => {
         dispatch(

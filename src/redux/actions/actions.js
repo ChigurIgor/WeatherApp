@@ -1,4 +1,4 @@
-import {SET_ERROR, SET_FORECAST, SET_WEATHER} from "../actionTypes";
+import {SET_ERROR, SET_FORECAST, SET_LOCATION, SET_WEATHER} from "../actionTypes";
 
 export const setErrorAction = (err) => {
     return {
@@ -14,7 +14,14 @@ export const setWeatherAction = (weather) => {
 }
 export const setForecastAction = (weather) => {
     return {
-        type: SET_FORECAST ,
+        type: SET_FORECAST,
         payload: weather
+    }
+}
+
+export const setLocation = (location) => {
+    return {
+        type: SET_LOCATION,
+        payload: location
     }
 }
