@@ -6,7 +6,7 @@ import iconThunder from "../../assets/weatherIcons/thunder.png";
 import iconFog from "../../assets/weatherIcons/fog.png";
 import iconSnow from "../../assets/weatherIcons/snow.png";
 import {useEffect, useState} from "react";
-import {getForecast, getWeather} from "../../redux/actions/weatherActions";
+import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentLocation} from "../../redux/actions/locationActions";
 
@@ -33,7 +33,14 @@ const CurrentWeatherComponent = () => {
         dispatch(
             getCurrentLocation()
         )
+
     }, [dispatch])
+    useEffect(() => {
+        dispatch(
+            getWeatherInCurrentLocation(location)
+        )
+    }, [dispatch, location])
+
 
     const getWeatherInCity = (city) => {
         dispatch(

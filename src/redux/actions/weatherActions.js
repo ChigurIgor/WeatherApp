@@ -22,6 +22,28 @@ export const getWeather = (city, setCity) =>{
              });
     }
 }
+export const getWeatherInCurrentLocation = (location) =>{
+    return dispatch => {
+        if(location !== undefined && location.lat !== undefined && location.lon !== undefined){
+            const params = {
+                appid: API_KEY,
+                // q: city,
+                lang: 'en',
+                lat: location.lat,
+                lon: location.lon,
+                unit: 'metric', // values are (metric, standard, imperial)
+            };
+            axios.get(BASE_URL_WEATHER, {params})
+                .then(response=> {
+                    dispatch(setWeatherAction(response.data));
+                })
+                .catch(err => {
+                    dispatch(setErrorAction(err));
+                });
+        }
+    }
+}
+
 
 export const getForecast = (weather) =>{
         return dispatch => {
@@ -47,3 +69,4 @@ export const getForecast = (weather) =>{
         }
     }
 }
+
