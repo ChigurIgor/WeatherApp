@@ -5,6 +5,7 @@ import iconRain from "../../assets/weatherIcons/rain.png";
 import iconThunder from "../../assets/weatherIcons/thunder.png";
 import iconFog from "../../assets/weatherIcons/fog.png";
 import iconSnow from "../../assets/weatherIcons/snow.png";
+import arrow from "../../assets/arrow.png";
 import {useEffect, useState} from "react";
 import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
@@ -130,7 +131,6 @@ const CurrentWeatherComponent = () => {
         )
     }
 
-
     return(
         <div className={
             weather !== undefined && weather.main !== undefined
@@ -163,11 +163,21 @@ const CurrentWeatherComponent = () => {
                     <div className="date">{new Date(weather.dt*1000).toLocaleDateString()}</div>
                 </div>
                 <div className="weatherBox">
-                    <div className="temp">
-                        {Math.round((weather.main.temp + ZERO_TEMPERATURE))}&#176;
+                    <div className="tempBox">
+                        <div className="temp">
+                            {Math.round((weather.main.temp + ZERO_TEMPERATURE))}&#176;
+                        </div>
+                        <div className="tempDaily">
+                            {Math.round((weather.main.temp_min + ZERO_TEMPERATURE))}&#176; - {Math.round((weather.main.temp_max + ZERO_TEMPERATURE))}&#176;
+                        </div>
                     </div>
                     <div className="weather">
                         {weather.weather[0].main}
+                    </div>
+                    <div className="windBox">
+                        <div className="windDirection">
+                            <img className='iconWeather' style={backround_collor: red} src={arrow} alt='arrow'/>
+                        </div>
                     </div>
                 </div>
                 {iconWeather(weather.weather[0])}
