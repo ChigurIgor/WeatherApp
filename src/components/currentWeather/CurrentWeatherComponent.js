@@ -176,7 +176,7 @@ const CurrentWeatherComponent = () => {
                     </div>
                     <div className="windBox">
                         <div className="windDirection">
-                            <img className='iconWeather' style={backround_collor: red} src={arrow} alt='arrow'/>
+                            <img className='iconWind'  style={{transform: 'rotate('+weather.wind.deg +'deg)'}} src={arrow} alt='arrow'/>
                         </div>
                     </div>
                 </div>

@@ -117,6 +117,26 @@ display: block;
   top: 100px;
   right: 0;
 }
+
+.windBox{
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 0 auto;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 25px 35px;
+  color: #fff;
+  font-weight: 900;
+  text-shadow: 3px 6px rgba(50,50,70,0.5);
+  box-shadow: 3px 6px rgba(0,0,0,0.2);
+
+}
+.windBox .iconWind{
+  width: 50px;
+  height: 50px;
+}
 .forecastHourly{
   text-align: center;
   position: relative;
