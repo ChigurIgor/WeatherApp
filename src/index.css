@@ -137,24 +137,36 @@ display: block;
   width: 50px;
   height: 50px;
 }
+
+.container {
+  display: flex;
+  overflow-x: auto;
+}
+
+.imageTest{
+  width: 50px;
+  height: 50px;
+}
+
+
 .forecastHourly{
   text-align: center;
   position: relative;
   z-index: 1;
-  display: flex;
   flex: 10 0 auto;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
+  display: flex;
   overflow-x: auto;
   margin-top: 50px;
 }
 
 .forecastHourly .forecastHourlyItemBox{
   position: relative;
-  width: 100px;
-  margin: 5px auto;
+  width: 200px;
+  margin: 5px 5px;
   background-color: rgba(255,255,255,0.2);
   border-radius: 16px;
-  padding: 15px 0;
+  padding: 15px 30px;
   color: #fff;
   font-size: 20px;
   font-weight: 300;

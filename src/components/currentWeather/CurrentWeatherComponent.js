@@ -101,6 +101,12 @@ const CurrentWeatherComponent = () => {
                         {/*{item.weather[0].main}*/}
                         {iconWeather(item.weather[0])}
                     </div>
+                    {/*<img*/}
+                    {/*    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Weather-rain-thunderstorm.svg/1200px-Weather-rain-thunderstorm.svg.png"*/}
+                    {/*    alt="Bhutan"*/}
+                    {/*    className='imageTest'*/}
+                    {/*/>*/}
+
 
                 </div>)
             }
@@ -176,11 +182,20 @@ const CurrentWeatherComponent = () => {
                     </div>
                     <div className="windBox">
                         <div className="windDirection">
-                            <img className='iconWind'  style={{transform: 'rotate('+weather.wind.deg +'deg)'}} src={arrow} alt='arrow'/>
+                            <img className='iconWind'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>
                         </div>
                     </div>
                 </div>
                 {iconWeather(weather.weather[0])}
+                {/*<div className="container">*/}
+                {/*        <img*/}
+                {/*            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Weather-rain-thunderstorm.svg/1200px-Weather-rain-thunderstorm.svg.png"*/}
+                {/*            alt="Bhutan"*/}
+                {/*            className='imageTest'*/}
+                {/*        />*/}
+
+                {/*    </div>*/}
+
                 {forecast !== undefined && forecast.hourly !== undefined &&
                 <>
                     {forecastHourly(forecast)}
