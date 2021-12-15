@@ -6,6 +6,7 @@ import iconThunder from "../../assets/weatherIcons/thunder.png";
 import iconFog from "../../assets/weatherIcons/fog.png";
 import iconSnow from "../../assets/weatherIcons/snow.png";
 import arrow from "../../assets/arrow.png";
+import compass from "../../assets/compass.png";
 import {useEffect, useState} from "react";
 import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
@@ -101,12 +102,12 @@ const CurrentWeatherComponent = () => {
                         {/*{item.weather[0].main}*/}
                         {iconWeather(item.weather[0])}
                     </div>
-                    {/*<img*/}
-                    {/*    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Weather-rain-thunderstorm.svg/1200px-Weather-rain-thunderstorm.svg.png"*/}
-                    {/*    alt="Bhutan"*/}
-                    {/*    className='imageTest'*/}
-                    {/*/>*/}
-
+                    <div className='forecastHourlyWind'>
+                        <img className='iconWind'  style={{transform: 'rotate('+(item.wind_deg+90) +'deg)'}} src={arrow} alt='arrow'/>
+                    </div>
+                    <div className="windTitle">
+                        <p>{Math.round(item.wind_speed)}m/s</p>
+                    </div>
 
                 </div>)
             }
@@ -128,8 +129,8 @@ const CurrentWeatherComponent = () => {
                             {Math.round((item.temp.night+ZERO_TEMPERATURE))}&#176;  {Math.round((item.temp.day+ZERO_TEMPERATURE))}&#176;
                         </div>
                         <div className='forecastDailyWeather'>
-                            {/*{item.weather[0].main}*/}
                             {iconWeather(item.weather[0])}
+
                         </div>
                     </div>)
                 }
@@ -181,21 +182,21 @@ const CurrentWeatherComponent = () => {
                         {weather.weather[0].main}
                     </div>
                     <div className="windBox">
-                        <div className="windDirection">
-                            <img className='iconWind'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>
+                        <div className="windWrapper">
+                            <div className="windDirection">
+                                <img className='iconWind'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>
+                            </div>
+                            <div className="windCompass">
+                                <img className='iconCompass'  src={compass} alt='compass'/>
+                            </div>
+                            <div className="windTitle">
+                                <p>{Math.round(weather.wind.speed)}m/s</p>
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 {iconWeather(weather.weather[0])}
-                {/*<div className="container">*/}
-                {/*        <img*/}
-                {/*            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Weather-rain-thunderstorm.svg/1200px-Weather-rain-thunderstorm.svg.png"*/}
-                {/*            alt="Bhutan"*/}
-                {/*            className='imageTest'*/}
-                {/*        />*/}
-
-                {/*    </div>*/}
-
                 {forecast !== undefined && forecast.hourly !== undefined &&
                 <>
                     {forecastHourly(forecast)}

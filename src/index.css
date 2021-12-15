@@ -126,35 +126,41 @@ display: block;
   margin: 0 auto;
   background-color: rgba(255,255,255,0.2);
   border-radius: 16px;
-  padding: 25px 35px;
+  padding: 10px 10px;
   color: #fff;
   font-weight: 900;
   text-shadow: 3px 6px rgba(50,50,70,0.5);
   box-shadow: 3px 6px rgba(0,0,0,0.2);
 
 }
-.windBox .iconWind{
-  width: 50px;
-  height: 50px;
-}
-
-.container {
+.windWrapper{
   display: flex;
-  overflow-x: auto;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  padding: 50px 70px;
 }
-
-.imageTest{
-  width: 50px;
-  height: 50px;
+.windBox  .iconWind{
+  width: 70px;
+  height: 30px;
 }
-
-
+.windBox .windCompass{
+  position: absolute;
+}
+.windBox  .iconCompass{
+  width: 200px;
+  height: 200px;
+}
+.windBox .windTitle{
+  position: absolute;
+  bottom: 0;
+  font-size: 30px;
+}
 .forecastHourly{
   text-align: center;
   position: relative;
   z-index: 1;
   flex: 10 0 auto;
-  /*flex-wrap: wrap;*/
   display: flex;
   overflow-x: auto;
   margin-top: 50px;
@@ -163,12 +169,12 @@ display: block;
 .forecastHourly .forecastHourlyItemBox{
   position: relative;
   width: 200px;
-  margin: 5px 5px;
+  margin: 5px 3px;
   background-color: rgba(255,255,255,0.2);
   border-radius: 16px;
-  padding: 15px 30px;
+  padding: 10px 10px;
   color: #fff;
-  font-size: 20px;
+  font-size: 12px;
   font-weight: 300;
   text-shadow: 1px 2px rgba(50,50,70,0.5);
   /*text-align: center;*/
@@ -176,7 +182,7 @@ display: block;
 }
 
 .forecastHourly .forecastHourlyItemBox .forecastHourlyTemp{
-  font-size: 30px;
+  font-size: 22px;
   z-index: 1;
   position: relative;
 }
@@ -188,7 +194,14 @@ display: block;
   right: 0;
   z-index: 0;
 }
-
+.forecastHourly  .iconWind{
+  margin-top: 60px;
+  width: 35px;
+  height: 15px;
+}
+.forecastHourly .windTitle{
+  margin-top: 20px;
+}
 .forecastDaily{
   text-align: center;
   position: relative;
