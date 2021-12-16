@@ -1,11 +1,11 @@
 import {SET_FORECAST, SET_WEATHER} from "../actionTypes";
 
-const INITIAL_STATE = {
-    weather: '',
-    forecast: ''
-}
+// const INITIAL_STATE = {
+//     // weather: '',
+//     // forecast: ''
+// }
 
-export const weatherReducer = (state = INITIAL_STATE, {type, payload}) => {
+export const weatherReducer = (state, {type, payload}) => {
     switch (type) {
         case SET_WEATHER:
             return {

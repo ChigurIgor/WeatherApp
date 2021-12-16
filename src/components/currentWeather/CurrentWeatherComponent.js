@@ -11,6 +11,7 @@ import {useEffect, useState} from "react";
 import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentLocation} from "../../redux/actions/locationActions";
+import {Button} from "react-bootstrap";
 
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
@@ -18,13 +19,13 @@ const CurrentWeatherComponent = () => {
     const {location} = useSelector(state => state.locationStore);
     const {error} = useSelector(state => state.errorsStore);
     const [city, setCity] = useState('');
+    const [disableForecastHourly, setDisableForecastHourly] = useState(true);
+    const [disableForecastDaily, setDisableForecastDaily] = useState(true);
 
     console.log(weather);
     console.log(forecast);
-    console.log(error);
-    console.log(location);
-
-
+    // console.log(error);
+    // console.log(location);
 
     useEffect(() => {
         dispatch(
@@ -87,31 +88,39 @@ const CurrentWeatherComponent = () => {
 
     const forecastHourly = (forecast) => {
         let hourly = forecast.hourly.slice(0, 24);
-
         return (
-        <div className="forecastHourly">
-            {hourly.map(item =>
-                <div className='forecastHourlyItemBox' key = {item.dt}>
-                    <div className="forecastHourlyTime">
-                        {new Date(item.dt*1000).getHours()}:00
-                    </div>
-                    <div className='forecastHourlyTemp'>
-                        {Math.round((item.temp+ZERO_TEMPERATURE))}&#176;
-                    </div>
-                    <div className='forecastHourlyWeather'>
-                        {/*{item.weather[0].main}*/}
-                        {iconWeather(item.weather[0])}
-                    </div>
-                    <div className='forecastHourlyWind'>
-                        <img className='iconWind'  style={{transform: 'rotate('+(item.wind_deg+90) +'deg)'}} src={arrow} alt='arrow'/>
-                    </div>
-                    <div className="windTitle">
-                        <p>{Math.round(item.wind_speed)}m/s</p>
-                    </div>
+            <div className= 'forecastHourlyWrapper'>
+                <Button onClick={() => setDisableForecastHourly(!disableForecastHourly)}>
+                    {disableForecastHourly ? 'Show Hourly Forecast' : 'Hide'}
+                </Button>
+                {!disableForecastHourly &&
+                <div className="forecastHourly">
+                    {hourly.map(item =>
+                        <div className='forecastHourlyItemBox' key = {item.dt}>
+                            <div className="forecastHourlyTime">
+                                {new Date(item.dt*1000).getHours()}:00
+                            </div>
+                            <div className='forecastHourlyTemp'>
+                                {Math.round((item.temp+ZERO_TEMPERATURE))}&#176;
+                            </div>
+                            <div className='forecastHourlyWeather'>
+                                {/*{item.weather[0].main}*/}
+                                {iconWeather(item.weather[0])}
+                            </div>
+                            <div className='forecastHourlyWind'>
+                                <img className='iconWind'  style={{transform: 'rotate('+(item.wind_deg+90) +'deg)'}} src={arrow} alt='arrow'/>
+                            </div>
+                            <div className="windTitle">
+                                <p>{Math.round(item.wind_speed)}m/s</p>
+                            </div>
+                        </div>)
 
-                </div>)
-            }
-        </div>
+                    }
+
+                </div>
+
+                }
+            </div>
     )
 }
 
@@ -119,20 +128,26 @@ const CurrentWeatherComponent = () => {
         let daily = forecast.daily;
 
         return (
-            <div className="forecastDaily">
-                {daily.map(item =>
-                    <div className='forecastDailyItemBox' key = {item.dt}>
-                        <div className="forecastDailyTime">
-                            {new Date(item.dt*1000).getDate()}.{new Date(item.dt*1000).getMonth()}
-                        </div>
-                        <div className='forecastDailyTemp'>
-                            {Math.round((item.temp.night+ZERO_TEMPERATURE))}&#176;  {Math.round((item.temp.day+ZERO_TEMPERATURE))}&#176;
-                        </div>
-                        <div className='forecastDailyWeather'>
-                            {iconWeather(item.weather[0])}
-
-                        </div>
+            <div className= 'forecastDailyWrapper'>
+                <Button onClick={() => setDisableForecastDaily(!disableForecastDaily)}>
+                    {disableForecastDaily ? 'Show Daily Forecast' : 'Hide'}
+                </Button>
+                {!disableForecastDaily &&
+                <div className="forecastDaily">
+                    {daily.map(item =>
+                        <div className='forecastDailyItemBox' key = {item.dt}>
+                            <div className="forecastDailyTime">
+                                {new Date(item.dt*1000).getDate()}.{new Date(item.dt*1000).getMonth()}
+                            </div>
+                            <div className='forecastDailyTemp'>
+                                {Math.round((item.temp.night+ZERO_TEMPERATURE))}&#176;  {Math.round((item.temp.day+ZERO_TEMPERATURE))}&#176;
+                            </div>
+                            <div className='forecastDailyWeather'>
+                                {iconWeather(item.weather[0])}
+                            </div>
                     </div>)
+                }
+            </div>
                 }
             </div>
         )
