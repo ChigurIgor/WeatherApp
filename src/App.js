@@ -12,7 +12,6 @@ const App = () => {
 
     return (
         <div className='App'>
-
             <NavbarComponent/>
             <Switch >
                 <Route path="/" exact component={CurrentWeatherComponent}/>

@@ -73,6 +73,9 @@ const CurrentWeatherComponent = () => {
             case 'Fog':
                 link = iconFog
                 break;
+            case 'Haze':
+                link = iconFog
+                break;
             case 'Snow':
                 link = iconSnow
                 break;
@@ -204,6 +207,9 @@ const CurrentWeatherComponent = () => {
                             <div className="windCompass">
                                 <img className='iconCompass'  src={compass} alt='compass'/>
                             </div>
+                            {/*<div className="windowCompassShadow">*/}
+                            {/*    <img className='iconCompass shadow'  src={compass} alt='compass'/>*/}
+                            {/*</div>*/}
                             <div className="windTitle">
                                 <p>{Math.round(weather.wind.speed)}m/s</p>
                             </div>

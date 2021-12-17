@@ -4,10 +4,8 @@ import {Container, Nav, Navbar} from "react-bootstrap";
 
 const NavbarComponent = () => {
     return (
-
-
             <div className="NavbarComponent">
-                <Navbar collapseOnSelect expand="lg" bg=""
+                <Navbar className='navbar' collapseOnSelect expand="lg" bg=""
                         variant="light" >
                     <Container>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
