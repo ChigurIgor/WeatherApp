@@ -163,9 +163,29 @@ display: block;
   height: 300px;
   padding: 50px 70px;
 }
+.windShadowWrapper{
+  position: absolute;
+  top: 17px;
+  left: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  padding: 50px 70px;
+}
+.windShadowWrapper .shadow{
+  /*filter: invert(0.5);*/
+  display: none;
+}
+
 .windBox  .iconWind{
   width: 70px;
   height: 30px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
+.windBox .windCompass{
+  position: absolute;
 }
 .windBox .windCompass{
   position: absolute;
@@ -173,10 +193,16 @@ display: block;
 .windBox  .iconCompass{
   width: 200px;
   height: 200px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
 }
-.shadow{
+.windowCompassShadow.shadow{
   filter: invert(0.5);
   /*filter: grayscale(100%);*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(10%,33% ) ;
 }
 .windBox .windTitle{
   position: absolute;

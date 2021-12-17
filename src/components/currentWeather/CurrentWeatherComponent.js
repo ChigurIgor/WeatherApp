@@ -200,21 +200,32 @@ const CurrentWeatherComponent = () => {
                         {weather.weather[0].main}
                     </div>
                     <div className="windBox">
-                        <div className="windWrapper">
+                        <div className="windShadowWrapper">
                             <div className="windDirection">
-                                <img className='iconWind'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>
+                                <img className='iconWind shadow'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>
                             </div>
                             <div className="windCompass">
-                                <img className='iconCompass'  src={compass} alt='compass'/>
+                                <img className='iconCompass shadow'  src={compass} alt='compass'/>
+                            </div>
+                        </div>
+                        <div className="windWrapper">
+                            {/*<div className="windDirectionShadow">*/}
+                            {/*    <img className='iconWind shadow'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>*/}
+                            {/*</div>*/}
+                            <div className="windDirection">
+                                <img className='iconWind'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>
                             </div>
                             {/*<div className="windowCompassShadow">*/}
                             {/*    <img className='iconCompass shadow'  src={compass} alt='compass'/>*/}
                             {/*</div>*/}
+                            <div className="windCompass">
+                                <img className='iconCompass'  src={compass} alt='compass'/>
+                            </div>
+
                             <div className="windTitle">
                                 <p>{Math.round(weather.wind.speed)}m/s</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 {iconWeather(weather.weather[0])}
