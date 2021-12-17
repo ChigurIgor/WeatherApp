@@ -90,8 +90,8 @@ const CurrentWeatherComponent = () => {
         let hourly = forecast.hourly.slice(0, 24);
         return (
             <div className= 'forecastHourlyWrapper'>
-                <Button onClick={() => setDisableForecastHourly(!disableForecastHourly)}>
-                    {disableForecastHourly ? 'Show Hourly Forecast' : 'Hide'}
+                <Button className='btn' onClick={() => setDisableForecastHourly(!disableForecastHourly)}>
+                    {disableForecastHourly ? ' Hourly Forecast' : 'Hide'}
                 </Button>
                 {!disableForecastHourly &&
                 <div className="forecastHourly">
@@ -129,8 +129,8 @@ const CurrentWeatherComponent = () => {
 
         return (
             <div className= 'forecastDailyWrapper'>
-                <Button onClick={() => setDisableForecastDaily(!disableForecastDaily)}>
-                    {disableForecastDaily ? 'Show Daily Forecast' : 'Hide'}
+                <Button className='btn' onClick={() => setDisableForecastDaily(!disableForecastDaily)}>
+                    {disableForecastDaily ? 'Daily Forecast' : 'Hide'}
                 </Button>
                 {!disableForecastDaily &&
                 <div className="forecastDaily">

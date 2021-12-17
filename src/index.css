@@ -156,6 +156,25 @@ display: block;
   bottom: 0;
   font-size: 30px;
 }
+
+.forecastHourlyWrapper .btn{
+  background-color: rgba(255,255,255,0.2);
+  box-shadow: 3px 6px rgba(0,0,0,0.2);
+  text-shadow: 2px 4px rgba(50,50,70,0.5);
+  color: #fff;
+  border: none;
+  margin: 30px auto;
+  padding: 15px 15px;
+  width: 230px;
+  font-size: 24px;
+  border-radius: 16px;
+}
+.forecastHourlyWrapper .btn:active{
+  background-color: rgba(255,255,255,0.2);
+  box-shadow: 1px 2px rgba(0,0,0,0.2);
+  text-shadow: 2px 4px rgba(50,50,70,0.5);
+  transform: translateY(2px);
+}
 .forecastHourly{
   text-align: center;
   position: relative;
@@ -163,9 +182,7 @@ display: block;
   flex: 10 0 auto;
   display: flex;
   overflow-x: auto;
-  margin-top: 50px;
 }
-
 .forecastHourly .forecastHourlyItemBox{
   position: relative;
   width: 200px;
@@ -202,6 +219,26 @@ display: block;
 .forecastHourly .windTitle{
   margin-top: 20px;
 }
+
+.forecastDailyWrapper .btn{
+  background-color: rgba(255,255,255,0.2);
+  box-shadow: 3px 6px rgba(0,0,0,0.2);
+  text-shadow: 2px 4px rgba(50,50,70,0.5);
+  color: #fff;
+  border: none;
+  margin: 30px auto;
+  padding: 15px 15px;
+  width: 230px;
+  font-size: 24px;
+  border-radius: 16px;
+}
+.forecastDailyWrapper .btn:active{
+  background-color: rgba(255,255,255,0.2);
+  box-shadow: 1px 2px rgba(0,0,0,0.2);
+  text-shadow: 2px 4px rgba(50,50,70,0.5);
+  transform: translateY(2px);
+}
+
 .forecastDaily{
   text-align: center;
   position: relative;
@@ -210,7 +247,6 @@ display: block;
   flex: 10 0 auto;
   flex-wrap: wrap;
   overflow-x: auto;
-  margin-top: 50px;
 }
 
 .forecastDaily .forecastDailyItemBox{
