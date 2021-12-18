@@ -1,13 +1,14 @@
 import {ZERO_TEMPERATURE} from "../../redux/constants";
-import iconSun from "../../assets/weatherIcons/sun.png";
-import iconClouds from "../../assets/weatherIcons/clouds.png";
-import iconRain from "../../assets/weatherIcons/rain.png";
-import iconThunder from "../../assets/weatherIcons/thunder.png";
-import iconFog from "../../assets/weatherIcons/fog.png";
-import iconSnow from "../../assets/weatherIcons/snow.png";
-import arrow from "../../assets/arrow.png";
-import compass from "../../assets/compass.png";
-import addToFavoutite from "../../assets/addToFavoutite.png";
+import iconSun from "../../assets/icons/weatherIcons/sun.png";
+import iconClouds from "../../assets/icons/weatherIcons/clouds.png";
+import iconRain from "../../assets/icons/weatherIcons/rain.png";
+import iconThunder from "../../assets/icons/weatherIcons/thunder.png";
+import iconFog from "../../assets/icons/weatherIcons/fog.png";
+import iconSnow from "../../assets/icons/weatherIcons/snow.png";
+import arrow from "../../assets/icons/arrow.png";
+import compass from "../../assets/icons/compass.png";
+import addToFavourite from "../../assets/icons/addToFavourite.png";
+import addedToFavourite from "../../assets/icons/addedToFavourite.png";
 import {useEffect, useState} from "react";
 import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
@@ -190,9 +191,10 @@ const CurrentWeatherComponent = () => {
                     <div className="location">{weather.name},{weather.sys.country}
                         <img
                             className='iconAdd'
-                            src={addToFavoutite}
+                            src={addToFavourite}
                             alt='add'
                             onClick={() => {}}
+                            title="Add this city to favourites"
                         />
                     </div>
                     <div className="date">{new Date(weather.dt*1000).toLocaleDateString()}</div>
