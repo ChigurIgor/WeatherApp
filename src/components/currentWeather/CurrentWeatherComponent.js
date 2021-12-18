@@ -7,6 +7,7 @@ import iconFog from "../../assets/weatherIcons/fog.png";
 import iconSnow from "../../assets/weatherIcons/snow.png";
 import arrow from "../../assets/arrow.png";
 import compass from "../../assets/compass.png";
+import addToFavoutite from "../../assets/addToFavoutite.png";
 import {useEffect, useState} from "react";
 import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
@@ -94,7 +95,7 @@ const CurrentWeatherComponent = () => {
         return (
             <div className= 'forecastHourlyWrapper'>
                 <Button className='btn' onClick={() => setDisableForecastHourly(!disableForecastHourly)}>
-                    {disableForecastHourly ? ' Hourly Forecast' : 'Hide'}
+                    {disableForecastHourly ? ' Hourly Forecast' : 'Hide Hourly'}
                 </Button>
                 {!disableForecastHourly &&
                 <div className="forecastHourly">
@@ -133,7 +134,7 @@ const CurrentWeatherComponent = () => {
         return (
             <div className= 'forecastDailyWrapper'>
                 <Button className='btn' onClick={() => setDisableForecastDaily(!disableForecastDaily)}>
-                    {disableForecastDaily ? 'Daily Forecast' : 'Hide'}
+                    {disableForecastDaily ? 'Daily Forecast' : 'Hide Daily'}
                 </Button>
                 {!disableForecastDaily &&
                 <div className="forecastDaily">
@@ -153,6 +154,8 @@ const CurrentWeatherComponent = () => {
             </div>
                 }
             </div>
+
+
         )
     }
 
@@ -184,7 +187,14 @@ const CurrentWeatherComponent = () => {
             &&
             <>
                 <div className="locationBox">
-                    <div className="location">{weather.name},{weather.sys.country}</div>
+                    <div className="location">{weather.name},{weather.sys.country}
+                        <img
+                            className='iconAdd'
+                            src={addToFavoutite}
+                            alt='add'
+                            onClick={() => {}}
+                        />
+                    </div>
                     <div className="date">{new Date(weather.dt*1000).toLocaleDateString()}</div>
                 </div>
                 <div className="weatherBox">
@@ -209,15 +219,11 @@ const CurrentWeatherComponent = () => {
                             </div>
                         </div>
                         <div className="windWrapper">
-                            {/*<div className="windDirectionShadow">*/}
-                            {/*    <img className='iconWind shadow'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>*/}
-                            {/*</div>*/}
+
                             <div className="windDirection">
                                 <img className='iconWind'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>
                             </div>
-                            {/*<div className="windowCompassShadow">*/}
-                            {/*    <img className='iconCompass shadow'  src={compass} alt='compass'/>*/}
-                            {/*</div>*/}
+
                             <div className="windCompass">
                                 <img className='iconCompass'  src={compass} alt='compass'/>
                             </div>

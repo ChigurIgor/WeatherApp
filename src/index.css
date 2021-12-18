@@ -90,6 +90,24 @@ display: block;
   position: relative;
   z-index: 1;
 }
+.locationBox .iconAdd{
+  background-color: transparent;
+  filter: invert(1) drop-shadow(5px 5px 5px #222);
+  width: 40px;
+  height: 40px;
+  /*-webkit-filter: invert(1) drop-shadow(5px 5px 5px #222);*/
+  margin-left: 10px;
+}
+.locationBox .iconAdd:hover{
+  cursor: pointer;
+  filter: invert(0.90) drop-shadow(5px 5px 5px #222);
+}
+
+.locationBox .iconAdd:active{
+  transform: translateY(2px);
+  filter: invert(0.90) drop-shadow(2px 2px 2px #222);
+
+}
 .locationBox .date{
   color: #fff;
   font-size: 20px;
@@ -216,7 +234,7 @@ display: block;
   text-shadow: 2px 4px rgba(50,50,70,0.5);
   color: #fff;
   border: none;
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   padding: 15px 15px;
   width: 230px;
   font-size: 24px;
@@ -239,7 +257,7 @@ display: block;
 .forecastHourly .forecastHourlyItemBox{
   position: relative;
   width: 200px;
-  margin: 5px 3px;
+  margin: 30px 3px 5px 3px;
   background-color: rgba(255,255,255,0.2);
   border-radius: 16px;
   padding: 10px 10px;
