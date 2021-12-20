@@ -14,6 +14,7 @@ import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentLocation} from "../../redux/actions/locationActions";
 import {Button} from "react-bootstrap";
+import {useLocalStorage} from "../../redux/hooks/LocalStorageHooks";
 
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
@@ -23,6 +24,8 @@ const CurrentWeatherComponent = () => {
     const [city, setCity] = useState('');
     const [disableForecastHourly, setDisableForecastHourly] = useState(true);
     const [disableForecastDaily, setDisableForecastDaily] = useState(true);
+    const [cityName, setCityName] = useLocalStorage("city", "");
+    const [countryName, setCountryName] = useLocalStorage("country", "");
 
     console.log(weather);
     console.log(forecast);
@@ -189,11 +192,16 @@ const CurrentWeatherComponent = () => {
             <>
                 <div className="locationBox">
                     <div className="location">{weather.name},{weather.sys.country}
+                        <p>{cityName},{countryName}</p>
+
                         <img
                             className='iconAdd'
                             src={addToFavourite}
                             alt='add'
-                            onClick={() => {}}
+                            onClick={() => {
+                                setCityName(weather.name);
+                                setCountryName(weather.sys.country);
+                            }}
                             title="Add this city to favourites"
                         />
                     </div>
