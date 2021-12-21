@@ -8,7 +8,7 @@ import iconSnow from "../../assets/icons/weatherIcons/snow.png";
 import arrow from "../../assets/icons/arrow.png";
 import compass from "../../assets/icons/compass.png";
 import addToFavourite from "../../assets/icons/addToFavourite.png";
-import addedToFavourite from "../../assets/icons/addedToFavourite.png";
+// import addedToFavourite from "../../assets/icons/addedToFavourite.png";
 import {useEffect, useState} from "react";
 import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
@@ -20,17 +20,18 @@ const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
     const {weather, forecast} = useSelector(state => state.weatherStore);
     const {location} = useSelector(state => state.locationStore);
-    const {error} = useSelector(state => state.errorsStore);
+    // const {error} = useSelector(state => state.errorsStore);
     const [city, setCity] = useState('');
     const [disableForecastHourly, setDisableForecastHourly] = useState(true);
     const [disableForecastDaily, setDisableForecastDaily] = useState(true);
-    const [cityName, setCityName] = useLocalStorage("city", "");
-    const [countryName, setCountryName] = useLocalStorage("country", "");
+    const [favourites, setFavourites] = useLocalStorage("favourites", []);
+
 
     console.log(weather);
     console.log(forecast);
     // console.log(error);
     // console.log(location);
+    console.log(favourites)
 
     useEffect(() => {
         dispatch(
@@ -192,15 +193,15 @@ const CurrentWeatherComponent = () => {
             <>
                 <div className="locationBox">
                     <div className="location">{weather.name},{weather.sys.country}
-                        <p>{cityName},{countryName}</p>
-
+                        {/*<p>{cityName},{countryName}</p>*/}
                         <img
                             className='iconAdd'
                             src={addToFavourite}
                             alt='add'
                             onClick={() => {
-                                setCityName(weather.name);
-                                setCountryName(weather.sys.country);
+                                setFavourites([...favourites, {city:weather.name, country: weather.sys.country}])
+                                // setCityName(weather.name);
+                                // setCountryName(weather.sys.country);
                             }}
                             title="Add this city to favourites"
                         />
