@@ -1,5 +1,6 @@
 import {useLocalStorage} from "../../redux/hooks/LocalStorageHooks";
 import FavouritesItem from "./favouritesItem/FavouritesItem";
+import styles from './styles.module.css'
 
 const FavouritesComponent = () => {
 
@@ -17,10 +18,12 @@ const FavouritesComponent = () => {
     }
 
     return(
-            <div className="FavouritesComponent">
-                <h3>Favourites</h3>
-                {renderList(favourites)}
-            </div>
+                <div className={styles.mainContainer}>
+                    <h3 className={styles.title}>Favourites</h3>
+                    <div className={styles.listcontainer}>
+                        {renderList(favourites)}
+                    </div>
+                </div>
     )
 }
 
