@@ -192,6 +192,7 @@ const CurrentWeatherComponent = () => {
                             src={addToFavourite}
                             alt='add'
                             onClick={() => {
+                                !favourites.some({city:weather.name, country: weather.sys.country}) &&
                                 setFavourites([...favourites, {city:weather.name, country: weather.sys.country}])
                                 // setCityName(weather.name);
                                 // setCountryName(weather.sys.country);

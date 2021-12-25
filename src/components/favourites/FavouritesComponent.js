@@ -1,7 +1,7 @@
 import {useLocalStorage} from "../../redux/hooks/LocalStorageHooks";
 import FavouritesItem from "./favouritesItem/FavouritesItem";
 import styles from './styles.module.css'
-import { useCallback } from 'react';
+// import { useCallback } from 'react';
 
 const FavouritesComponent = () => {
 
@@ -9,13 +9,13 @@ const FavouritesComponent = () => {
     console.log(favourites);
     const deleteItem = (city, country) => {
         const newArr = favourites.filter(e => (e.city !== city && e.country !== country));
-        // setFavourites(newArr)
-        console.log(newArr)
+        setFavourites(newArr);
+        console.log(newArr);
     }
 
-    const onItemClick  = useCallback(() => {
-        console.log('Clicked!');
-    }, []);
+    // const onItemClick  = useCallback(() => {
+    //     console.log('Clicked!');
+    // }, []);
 
     const renderList = (arr) => {
         return (
@@ -35,9 +35,15 @@ const FavouritesComponent = () => {
     return(
                 <div className={styles.mainContainer}>
                     <h3 className={styles.title}>Favourites</h3>
+                    {favourites !== undefined && favourites.length > 0 ?
                     <div className={styles.listcontainer}>
-                        {renderList(favourites)}
-                    </div>
+                    {renderList(favourites)}
+                        </div>
+                        :
+                        <div className={styles.listPlaceholder}>
+                            <p>There are no saved cities yet</p>
+                        </div>
+                    }
                 </div>
     )
 }
