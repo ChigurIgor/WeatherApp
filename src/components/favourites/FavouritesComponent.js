@@ -13,6 +13,13 @@ const FavouritesComponent = () => {
         console.log(newArr);
     }
 
+    const selectItem = (city, country) => {
+        // const newArr = favourites.filter(e => (e.city !== city && e.country !== country));
+        // setFavourites(newArr);
+        console.log(city,country);
+    }
+
+
     // const onItemClick  = useCallback(() => {
     //     console.log('Clicked!');
     // }, []);
@@ -24,8 +31,8 @@ const FavouritesComponent = () => {
                     <FavouritesItem
                         city={item.city}
                         country = {item.country}
-                        // deleteFunction ={() => deleteItem}
-                        onItemClick={deleteItem}
+                        deleteItem={deleteItem}
+                        selectItem={selectItem}
                     />
                 </div>)}
             </div>
