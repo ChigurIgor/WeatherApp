@@ -152,9 +152,12 @@ const CurrentWeatherComponent = () => {
             </div>
                 }
             </div>
-
-
         )
+    }
+
+    const addToFavourites = (city, country) => {
+        !favourites.some(item => item.city === city && item.country === country) &&
+        setFavourites([...favourites, {city:city, country: country}])
     }
 
     return(
@@ -191,12 +194,7 @@ const CurrentWeatherComponent = () => {
                             className='iconAdd'
                             src={addToFavourite}
                             alt='add'
-                            onClick={() => {
-                                !favourites.some({city:weather.name, country: weather.sys.country}) &&
-                                setFavourites([...favourites, {city:weather.name, country: weather.sys.country}])
-                                // setCityName(weather.name);
-                                // setCountryName(weather.sys.country);
-                            }}
+                            onClick={() => addToFavourites(weather.name, weather.sys.country)}
                             title="Add this city to favourites"
                         />
                     </div>
@@ -232,7 +230,6 @@ const CurrentWeatherComponent = () => {
                             <div className="windCompass">
                                 <img className='iconCompass'  src={compass} alt='compass'/>
                             </div>
-
                             <div className="windTitle">
                                 <p>{Math.round(weather.wind.speed)}m/s</p>
                             </div>
