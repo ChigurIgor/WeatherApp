@@ -19,32 +19,46 @@ import {useLocalStorage} from "../../redux/hooks/LocalStorageHooks";
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
     const {weather, forecast} = useSelector(state => state.weatherStore);
-    const {location} = useSelector(state => state.locationStore);
+    const {location,selectedCity} = useSelector(state => state.locationStore);
     // const {error} = useSelector(state => state.errorsStore);
     const [city, setCity] = useState('');
     const [disableForecastHourly, setDisableForecastHourly] = useState(true);
     const [disableForecastDaily, setDisableForecastDaily] = useState(true);
     const [favourites, setFavourites] = useLocalStorage("favourites", []);
 
+    console.log(selectedCity);
+    console.log(weather);
+    console.log(forecast);
+    console.log(city);
+
+    useEffect(() => {
+            dispatch(
+                getCurrentLocation()
+            )
+
+    }, [dispatch])
+    useEffect(() => {
+        if(selectedCity === undefined) {
+            dispatch(
+                getWeatherInCurrentLocation(location)
+            )
+        }
+        else {
+            dispatch(
+                getWeather(selectedCity)
+            )
+        }
+
+    }, [dispatch, selectedCity, location])
+
     useEffect(() => {
         dispatch(
             getForecast(weather)
         )
     }, [dispatch, weather])
-    useEffect(() => {
-        dispatch(
-            getCurrentLocation()
-        )
-
-    }, [dispatch])
-    useEffect(() => {
-        dispatch(
-            getWeatherInCurrentLocation(location)
-        )
-    }, [dispatch, location])
-
 
     const getWeatherInCity = (city) => {
+        console.log(city)
         dispatch(
             getWeather(city, setCity)
         )

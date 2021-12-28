@@ -3,12 +3,15 @@ import 'dayjs/locale/de';
 import NavbarComponent from "./components/navbar/NavbarComponent";
 import {
     Route,
-    Switch,
+    Switch, useHistory,
 } from "react-router-dom"
 import FavouritesComponent from "./components/favourites/FavouritesComponent";
 import CurrentWeatherComponent from "./components/currentWeather/CurrentWeatherComponent";
 
+export let globalHistory;
+
 const App = () => {
+    globalHistory = useHistory();
 
     return (
         <div className='App'>

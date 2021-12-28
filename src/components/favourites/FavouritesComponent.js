@@ -1,12 +1,15 @@
 import {useLocalStorage} from "../../redux/hooks/LocalStorageHooks";
 import FavouritesItem from "./favouritesItem/FavouritesItem";
 import styles from './styles.module.css'
+import {setSelectedCity} from "../../redux/actions/actions";
+import {useDispatch} from "react-redux";
+import {goToMain} from "../../redux/actions/navigationActions";
 // import { useCallback } from 'react';
 
 const FavouritesComponent = () => {
-
+    const dispatch = useDispatch();
     const [favourites, setFavourites] = useLocalStorage('favourites', [])
-    console.log(favourites);
+
     const deleteItem = (city, country) => {
         const newArr = favourites.filter(e => (e.city !== city && e.country !== country));
         setFavourites(newArr);
@@ -14,15 +17,9 @@ const FavouritesComponent = () => {
     }
 
     const selectItem = (city, country) => {
-        // const newArr = favourites.filter(e => (e.city !== city && e.country !== country));
-        // setFavourites(newArr);
-        console.log(city,country);
+        dispatch(setSelectedCity(city));
+        goToMain();
     }
-
-
-    // const onItemClick  = useCallback(() => {
-    //     console.log('Clicked!');
-    // }, []);
 
     const renderList = (arr) => {
         return (

@@ -2,7 +2,7 @@ import axios from "axios";
 import {API_KEY, BASE_URL_ONE_CALL, BASE_URL_WEATHER} from "../constants";
 import {setErrorAction, setForecastAction, setWeatherAction} from "./actions";
 
-export const getWeather = (city, setCity) =>{
+export const getWeather = (city) =>{
     return async dispatch => {
         try {
             const params = {
@@ -11,18 +11,9 @@ export const getWeather = (city, setCity) =>{
                 lang: 'en',
                 unit: 'metric', // values are (metric, standard, imperial)
             };
-            // axios.get(BASE_URL_WEATHER, {params})
-            //     .then(response=> {
-            //         setCity('');
-            //         dispatch(setWeatherAction(response.data));
-            //     })
-            //     .catch(err => {
-            //         dispatch(setErrorAction(err));
-            //     });
-
             const response = axios.get(BASE_URL_WEATHER, {params})
             const {data} = await response;
-            setCity('');
+            // setCity('');
             dispatch(setWeatherAction(data))
         }
         catch (err){
@@ -43,13 +34,6 @@ export const getWeatherInCurrentLocation = (location) =>{
                     lon: location.lon,
                     unit: 'metric', // values are (metric, standard, imperial)
                 };
-                // axios.get(BASE_URL_WEATHER, {params})
-                //     .then(response => {
-                //         dispatch(setWeatherAction(response.data));
-                //     })
-                //     .catch(err => {
-                //         dispatch(setErrorAction(err));
-                //     });
                 const response = axios.get(BASE_URL_WEATHER, {params});
                 const {data} = await response;
                 dispatch(setWeatherAction(data));
@@ -74,14 +58,6 @@ export const getForecast = (weather) =>{
                         lon: lon,
                         unit: 'metric', // values are (metric, standard, imperial)
                     };
-
-                    // axios.get(BASE_URL_ONE_CALL, {params})
-                    //     .then(response => {
-                    //         dispatch(setForecastAction(response.data));
-                    //     })
-                    //     .catch(err => {
-                    //         dispatch(setErrorAction(err));
-                    //     });
                     const response = axios.get(BASE_URL_ONE_CALL,{params});
                     const {data} = await response;
                     dispatch(setForecastAction(data));
