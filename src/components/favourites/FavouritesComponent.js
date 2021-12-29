@@ -11,7 +11,7 @@ const FavouritesComponent = () => {
     const [favourites, setFavourites] = useLocalStorage('favourites', [])
 
     const deleteItem = (city, country) => {
-        const newArr = favourites.filter(e => (e.city !== city && e.country !== country));
+        const newArr = favourites.filter(e => !(e.city === city && e.country === country));
         setFavourites(newArr);
         console.log(newArr);
     }

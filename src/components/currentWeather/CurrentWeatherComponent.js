@@ -26,11 +26,6 @@ const CurrentWeatherComponent = () => {
     const [disableForecastDaily, setDisableForecastDaily] = useState(true);
     const [favourites, setFavourites] = useLocalStorage("favourites", []);
 
-    console.log(selectedCity);
-    console.log(weather);
-    console.log(forecast);
-    console.log(city);
-
     useEffect(() => {
             dispatch(
                 getCurrentLocation()
@@ -58,7 +53,6 @@ const CurrentWeatherComponent = () => {
     }, [dispatch, weather])
 
     const getWeatherInCity = (city) => {
-        console.log(city)
         dispatch(
             getWeather(city, setCity)
         )
