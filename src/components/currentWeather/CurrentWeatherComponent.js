@@ -8,7 +8,7 @@ import iconSnow from "../../assets/icons/weatherIcons/snow.png";
 import arrow from "../../assets/icons/arrow.png";
 import compass from "../../assets/icons/compass.png";
 import addToFavourite from "../../assets/icons/addToFavourite.png";
-// import addedToFavourite from "../../assets/icons/addedToFavourite.png";
+import addedToFavourite from "../../assets/icons/addedToFavourite.png";
 import {useEffect, useState} from "react";
 import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
@@ -197,14 +197,24 @@ const CurrentWeatherComponent = () => {
             <>
                 <div className="locationBox">
                     <div className="location">{weather.name},{weather.sys.country}
-                        {/*<p>{cityName},{countryName}</p>*/}
-                        <img
-                            className='iconAdd'
-                            src={addToFavourite}
-                            alt='add'
-                            onClick={() => addToFavourites(weather.name, weather.sys.country)}
-                            title="Add this city to favourites"
-                        />
+                        {!favourites.some(item => item.city === weather.name && item.country === weather.sys.country) ?
+                            <img
+                                className='iconAdd'
+                                src={addToFavourite}
+                                alt='add'
+                                onClick={() => addToFavourites(weather.name, weather.sys.country)}
+                                title="Add this city to favourites"
+                            />
+                            :
+                            <img
+                                className='iconAdd'
+                                src={addedToFavourite}
+                                alt='added'
+                                title="Already Added to favourites"
+                            />
+                        }
+
+
                     </div>
                     <div className="date">{new Date(weather.dt*1000).toLocaleDateString()}</div>
                 </div>
