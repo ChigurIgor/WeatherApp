@@ -13,9 +13,9 @@ import {useEffect, useState} from "react";
 import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentLocation} from "../../redux/actions/locationActions";
-import {Button} from "react-bootstrap";
 import {useLocalStorage} from "../../redux/hooks/LocalStorageHooks";
 import ForecastHourlyComponent from "./forecastHourly/ForecastHourlyComponent";
+import ForecastDailyComponent from "./forecastDaily/ForecastDailyComponent";
 
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
@@ -23,7 +23,6 @@ const CurrentWeatherComponent = () => {
     const {location,selectedCity} = useSelector(state => state.locationStore);
     // const {error} = useSelector(state => state.errorsStore);
     const [city, setCity] = useState('');
-    const [disableForecastDaily, setDisableForecastDaily] = useState(true);
     const [favourites, setFavourites] = useLocalStorage("favourites", []);
 
     useEffect(() => {
@@ -96,40 +95,6 @@ const CurrentWeatherComponent = () => {
         </div>)
     }
 
-//     const forecastHourly = (forecast) => {
-//         let hourly = forecast.hourly.slice(0, 24);
-//
-// }
-
-    const forecastDaily = (forecast) => {
-        let daily = forecast.daily;
-
-        return (
-            <div className= 'forecastDailyWrapper'>
-                <Button className='btn' onClick={() => setDisableForecastDaily(!disableForecastDaily)}>
-                    {disableForecastDaily ? 'Daily Forecast' : 'Hide Daily'}
-                </Button>
-                {!disableForecastDaily &&
-                <div className="forecastDaily">
-                    {daily.map(item =>
-                        <div className='forecastDailyItemBox' key = {item.dt}>
-                            <div className="forecastDailyTime">
-                                {new Date(item.dt*1000).getDate()}.{new Date(item.dt*1000).getMonth()}
-                            </div>
-                            <div className='forecastDailyTemp'>
-                                {Math.round((item.temp.night+ZERO_TEMPERATURE))}&#176; -  {Math.round((item.temp.day+ZERO_TEMPERATURE))}&#176;
-                            </div>
-                            <div className='forecastDailyWeather'>
-                                {iconWeather(item.weather[0])}
-                            </div>
-                    </div>)
-                }
-            </div>
-                }
-            </div>
-        )
-    }
-
     const addToFavourites = (city, country) => {
         !favourites.some(item => item.city === city && item.country === country) &&
         setFavourites([...favourites, {city:city, country: country}])
@@ -191,7 +156,7 @@ const CurrentWeatherComponent = () => {
                             {Math.round((weather.main.temp + ZERO_TEMPERATURE))}&#176;
                         </div>
                         <div className="tempDaily">
-                            {Math.round((weather.main.temp_min + ZERO_TEMPERATURE))}&#176; - {Math.round((weather.main.temp_max + ZERO_TEMPERATURE))}&#176;
+                            {Math.round((weather.main.temp_min + ZERO_TEMPERATURE))}&#176;  {Math.round((weather.main.temp_max + ZERO_TEMPERATURE))}&#176;
                         </div>
                     </div>
                     <div className="weather">
@@ -226,9 +191,7 @@ const CurrentWeatherComponent = () => {
                     <ForecastHourlyComponent forecast={forecast}/>
                 }
                 {forecast !== undefined && forecast.daily !== undefined &&
-                <>
-                    {forecastDaily(forecast)}
-                </>
+                    <ForecastDailyComponent forecast={forecast}/>
                 }
 
             </>

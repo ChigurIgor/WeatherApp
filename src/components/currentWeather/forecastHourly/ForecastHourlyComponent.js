@@ -6,19 +6,19 @@ import {useState} from "react";
 import IconWeatherComponent from "../../supportCopmonents/iconWeatherComponent/IconWeatherComponent";
 
 const ForecastHourlyComponent = ({forecast}) => {
-    let hourly = forecast.hourly.slice(0, 24);
-    const [disableForecastHourly, setDisableForecastHourly] = useState(true);
+    const hourly = forecast.hourly.slice(0, 24);
+    const [disableForecast, setDisableForecast] = useState(true);
 
     return (
         <div>
             <Button
-                className={styles.forecastHourlyWrapperBtn}
-                onClick={() => setDisableForecastHourly(!disableForecastHourly)}
+                className={styles.btn}
+                onClick={() => setDisableForecast(!disableForecast)}
             >
-                {disableForecastHourly ? ' Hourly Forecast' : 'Hide Hourly'}
+                {disableForecast ? ' Hourly Forecast' : 'Hide Hourly'}
             </Button>
-            {!disableForecastHourly &&
-            <div className={styles.forecastHourly}>
+            {!disableForecast &&
+            <div className={styles.forecast}>
                 {hourly.map(item =>
                     <div className={styles.itemBox} key = {item.dt}>
                         <div className="forecastHourlyTime">
