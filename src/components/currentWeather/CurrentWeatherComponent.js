@@ -1,10 +1,4 @@
 import {ZERO_TEMPERATURE} from "../../redux/constants";
-import iconSun from "../../assets/icons/weatherIcons/sun.png";
-import iconClouds from "../../assets/icons/weatherIcons/clouds.png";
-import iconRain from "../../assets/icons/weatherIcons/rain.png";
-import iconThunder from "../../assets/icons/weatherIcons/thunder.png";
-import iconFog from "../../assets/icons/weatherIcons/fog.png";
-import iconSnow from "../../assets/icons/weatherIcons/snow.png";
 import arrow from "../../assets/icons/arrow.png";
 import compass from "../../assets/icons/compass.png";
 import addToFavourite from "../../assets/icons/addToFavourite.png";
@@ -16,6 +10,8 @@ import {getCurrentLocation} from "../../redux/actions/locationActions";
 import {useLocalStorage} from "../../redux/hooks/LocalStorageHooks";
 import ForecastHourlyComponent from "./forecastHourly/ForecastHourlyComponent";
 import ForecastDailyComponent from "./forecastDaily/ForecastDailyComponent";
+import IconWeatherComponent from "../supportCopmonents/iconWeatherComponent/IconWeatherComponent";
+import styles from './styles.module.css';
 
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
@@ -61,38 +57,38 @@ const CurrentWeatherComponent = () => {
         setCity(event.target.value);
     }
 
-    const iconWeather = (weather) => {
-        let link = "";
-        switch (weather.main){
-            case 'Clear':
-                link = iconSun
-                break;
-            case 'Clouds':
-                link = iconClouds
-                break;
-            case 'Rain':
-                (weather.description === "moderate rain") ?
-                    link = iconRain
-                    :
-                    link = iconThunder
-                break;
-            case 'Fog':
-                link = iconFog
-                break;
-            case 'Haze':
-                link = iconFog
-                break;
-            case 'Snow':
-                link = iconSnow
-                break;
-            default:
-                link = iconSun
-                break;
-        }
-        return (<div className='imageWeather'>
-            <img className='iconWeather' src={link} alt='iconWeather'/>
-        </div>)
-    }
+    // const iconWeather = (weather) => {
+    //     let link = "";
+    //     switch (weather.main){
+    //         case 'Clear':
+    //             link = iconSun
+    //             break;
+    //         case 'Clouds':
+    //             link = iconClouds
+    //             break;
+    //         case 'Rain':
+    //             (weather.description === "moderate rain") ?
+    //                 link = iconRain
+    //                 :
+    //                 link = iconThunder
+    //             break;
+    //         case 'Fog':
+    //             link = iconFog
+    //             break;
+    //         case 'Haze':
+    //             link = iconFog
+    //             break;
+    //         case 'Snow':
+    //             link = iconSnow
+    //             break;
+    //         default:
+    //             link = iconSun
+    //             break;
+    //     }
+    //     return (<div className='imageWeather'>
+    //         <img className='iconWeather' src={link} alt='iconWeather'/>
+    //     </div>)
+    // }
 
     const addToFavourites = (city, country) => {
         !favourites.some(item => item.city === city && item.country === country) &&
@@ -155,7 +151,7 @@ const CurrentWeatherComponent = () => {
                             {Math.round((weather.main.temp + ZERO_TEMPERATURE))}&#176;
                         </div>
                         <div className="tempDaily">
-                            {Math.round((weather.main.temp_min + ZERO_TEMPERATURE))}&#176;npm start  {Math.round((weather.main.temp_max + ZERO_TEMPERATURE))}&#176;
+                            {Math.round((weather.main.temp_min + ZERO_TEMPERATURE))}&#176;  {Math.round((weather.main.temp_max + ZERO_TEMPERATURE))}&#176;
                         </div>
                     </div>
                     <div className="weather">
@@ -185,15 +181,10 @@ const CurrentWeatherComponent = () => {
                         </div>
                     </div>
                 </div>
-                {iconWeather(weather.weather[0])}
-                {forecast !== undefined && forecast.hourly !== undefined &&
+                    <IconWeatherComponent weather={weather.weather[0]} className={styles.iconWeather}/>
                     <ForecastHourlyComponent forecast={forecast}/>
-                }
-                {forecast !== undefined && forecast.daily !== undefined &&
                     <ForecastDailyComponent forecast={forecast}/>
-                }
-
-            </>
+                    </>
             }
         </main>
         </div>
