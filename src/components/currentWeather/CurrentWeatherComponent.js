@@ -1,6 +1,4 @@
 import {ZERO_TEMPERATURE} from "../../redux/constants";
-import arrow from "../../assets/icons/arrow.png";
-import compass from "../../assets/icons/compass.png";
 import addToFavourite from "../../assets/icons/addToFavourite.png";
 import addedToFavourite from "../../assets/icons/addedToFavourite.png";
 import {useEffect, useState} from "react";
@@ -12,6 +10,7 @@ import ForecastHourlyComponent from "./forecastHourly/ForecastHourlyComponent";
 import ForecastDailyComponent from "./forecastDaily/ForecastDailyComponent";
 import IconWeatherComponent from "../supportCopmonents/iconWeatherComponent/IconWeatherComponent";
 import styles from './styles.module.css';
+import WindComponent from "./windComponent/WindComponent";
 
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
@@ -57,38 +56,6 @@ const CurrentWeatherComponent = () => {
         setCity(event.target.value);
     }
 
-    // const iconWeather = (weather) => {
-    //     let link = "";
-    //     switch (weather.main){
-    //         case 'Clear':
-    //             link = iconSun
-    //             break;
-    //         case 'Clouds':
-    //             link = iconClouds
-    //             break;
-    //         case 'Rain':
-    //             (weather.description === "moderate rain") ?
-    //                 link = iconRain
-    //                 :
-    //                 link = iconThunder
-    //             break;
-    //         case 'Fog':
-    //             link = iconFog
-    //             break;
-    //         case 'Haze':
-    //             link = iconFog
-    //             break;
-    //         case 'Snow':
-    //             link = iconSnow
-    //             break;
-    //         default:
-    //             link = iconSun
-    //             break;
-    //     }
-    //     return (<div className='imageWeather'>
-    //         <img className='iconWeather' src={link} alt='iconWeather'/>
-    //     </div>)
-    // }
 
     const addToFavourites = (city, country) => {
         !favourites.some(item => item.city === city && item.country === country) &&
@@ -157,29 +124,7 @@ const CurrentWeatherComponent = () => {
                     <div className="weather">
                         {weather.weather[0].main}
                     </div>
-                    <div className="windBox">
-                        <div className="windShadowWrapper">
-                            <div className="windDirection">
-                                <img className='iconWind shadow'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>
-                            </div>
-                            <div className="windCompass">
-                                <img className='iconCompass shadow'  src={compass} alt='compass'/>
-                            </div>
-                        </div>
-                        <div className="windWrapper">
-
-                            <div className="windDirection">
-                                <img className='iconWind'  style={{transform: 'rotate('+(weather.wind.deg+90) +'deg)'}} src={arrow} alt='arrow'/>
-                            </div>
-
-                            <div className="windCompass">
-                                <img className='iconCompass'  src={compass} alt='compass'/>
-                            </div>
-                            <div className="windTitle">
-                                <p>{Math.round(weather.wind.speed)}m/s</p>
-                            </div>
-                        </div>
-                    </div>
+                    <WindComponent weather={weather}/>
                 </div>
                     <IconWeatherComponent weather={weather.weather[0]} className={styles.iconWeather}/>
                     <ForecastHourlyComponent forecast={forecast}/>
