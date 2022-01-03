@@ -3,7 +3,7 @@ import FavouritesItem from "./favouritesItem/FavouritesItem";
 import styles from './styles.module.css'
 import {setSelectedCity} from "../../redux/actions/actions";
 import {useDispatch} from "react-redux";
-import {goToMain} from "../../redux/actions/navigationActions";
+import {goToMainPage} from "../../redux/actions/navigationActions";
 // import { useCallback } from 'react';
 
 const FavouritesComponent = () => {
@@ -18,7 +18,7 @@ const FavouritesComponent = () => {
 
     const selectItem = (city, country) => {
         dispatch(setSelectedCity(city));
-        goToMain();
+        goToMainPage();
     }
 
     const renderList = (arr) => {

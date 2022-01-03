@@ -29,8 +29,8 @@ const CurrentWeatherComponent = () => {
             dispatch(
                 getCurrentLocation()
             )
-
     }, [dispatch])
+
     useEffect(() => {
         if(selectedCity === undefined) {
             dispatch(
@@ -89,7 +89,6 @@ const CurrentWeatherComponent = () => {
                 link = iconSun
                 break;
         }
-
         return (<div className='imageWeather'>
             <img className='iconWeather' src={link} alt='iconWeather'/>
         </div>)
@@ -156,7 +155,7 @@ const CurrentWeatherComponent = () => {
                             {Math.round((weather.main.temp + ZERO_TEMPERATURE))}&#176;
                         </div>
                         <div className="tempDaily">
-                            {Math.round((weather.main.temp_min + ZERO_TEMPERATURE))}&#176;  {Math.round((weather.main.temp_max + ZERO_TEMPERATURE))}&#176;
+                            {Math.round((weather.main.temp_min + ZERO_TEMPERATURE))}&#176;npm start  {Math.round((weather.main.temp_max + ZERO_TEMPERATURE))}&#176;
                         </div>
                     </div>
                     <div className="weather">

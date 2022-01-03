@@ -19,7 +19,6 @@ export const getWeather = (city) =>{
         catch (err){
             dispatch(setErrorAction(err))
         }
-
     }
 }
 export const getWeatherInCurrentLocation = (location) =>{

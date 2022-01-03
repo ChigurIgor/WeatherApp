@@ -1,5 +1,5 @@
 import {globalHistory} from "../../App";
 
-export const goToMain = () => {
+export const goToMainPage = () => {
     globalHistory.push('/');
 }

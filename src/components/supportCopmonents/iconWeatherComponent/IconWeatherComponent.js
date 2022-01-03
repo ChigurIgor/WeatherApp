@@ -5,7 +5,7 @@ import iconThunder from "../../../assets/icons/weatherIcons/thunder.png";
 import iconFog from "../../../assets/icons/weatherIcons/fog.png";
 import iconSnow from "../../../assets/icons/weatherIcons/snow.png";
 
-const iconWeatherComponnet = ({weather, className}) => {
+const IconWeatherComponent = ({weather, className}) => {
     let link = "";
     switch (weather.main){
         case 'Clear':
@@ -39,4 +39,4 @@ const iconWeatherComponnet = ({weather, className}) => {
     </div>)
 }
 
-export default iconWeatherComponnet ;
+export default IconWeatherComponent ;
