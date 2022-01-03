@@ -28,18 +28,16 @@ const ForecastHourlyComponent = ({forecast}) => {
                             {Math.round((item.temp+ZERO_TEMPERATURE))}&#176;
                         </div>
                         <div className={styles.weather}>
-                            <IconWeatherComponent weather = {(item.weather[0])}/>
+                            <IconWeatherComponent weather = {(item.weather[0])} className={styles.iconWeather}/>
                         </div>
                         <div className='forecastHourlyWind'>
-                            <img className='iconWind'  style={{transform: 'rotate('+(item.wind_deg+90) +'deg)'}} src={arrow} alt='arrow'/>
+                            <img className={styles.iconWind}  style={{transform: 'rotate('+(item.wind_deg+90) +'deg)'}} src={arrow} alt='arrow'/>
                         </div>
-                        <div className="windTitle">
+                        <div className={styles.windTitle}>
                             <p>{Math.round(item.wind_speed)}m/s</p>
                         </div>
                     </div>)
-
                 }
-
             </div>
             }
         </div>

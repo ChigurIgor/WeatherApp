@@ -5,7 +5,7 @@ import iconThunder from "../../../assets/icons/weatherIcons/thunder.png";
 import iconFog from "../../../assets/icons/weatherIcons/fog.png";
 import iconSnow from "../../../assets/icons/weatherIcons/snow.png";
 
-const iconWeatherComponnet = ({weather}) => {
+const iconWeatherComponnet = ({weather, className}) => {
     let link = "";
     switch (weather.main){
         case 'Clear':
@@ -35,7 +35,7 @@ const iconWeatherComponnet = ({weather}) => {
     }
 
     return (<div className='imageWeather'>
-        <img className='iconWeather' src={link} alt='iconWeather'/>
+        <img className={className} src={link} alt='iconWeather'/>
     </div>)
 }
 

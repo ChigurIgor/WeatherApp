@@ -51,3 +51,19 @@
     right: 0;
     z-index: 0;
 }
+.iconWeather{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top:30%;
+    right: 0;
+    z-index: 0;
+}
+.iconWind{
+    margin-top: 60px;
+    width: 35px;
+    height: 15px;
+}
+.windTitle{
+    margin-top: 20px;
+}

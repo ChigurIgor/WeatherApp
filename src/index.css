@@ -276,22 +276,22 @@ display: block;
 /*  z-index: 1;*/
 /*  position: relative;*/
 /*}*/
-.forecastHourly .forecastHourlyItemBox .forecastHourlyWeather .iconWeather{
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top:30%;
-  right: 0;
-  z-index: 0;
-}
-.forecastHourly  .iconWind{
-  margin-top: 60px;
-  width: 35px;
-  height: 15px;
-}
-.forecastHourly .windTitle{
-  margin-top: 20px;
-}
+/*.forecastHourly .forecastHourlyItemBox .forecastHourlyWeather .iconWeather{*/
+/*  width: 40px;*/
+/*  height: 40px;*/
+/*  position: absolute;*/
+/*  top:30%;*/
+/*  right: 0;*/
+/*  z-index: 0;*/
+/*}*/
+/*.forecastHourly  .iconWind{*/
+/*  margin-top: 60px;*/
+/*  width: 35px;*/
+/*  height: 15px;*/
+/*}*/
+/*.forecastHourly .windTitle{*/
+/*  margin-top: 20px;*/
+/*}*/
 
 .forecastDailyWrapper .btn{
   background-color: rgba(255,255,255,0.2);
