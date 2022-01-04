@@ -1,5 +1,5 @@
 import {ZERO_TEMPERATURE} from "../../redux/constants";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentLocation} from "../../redux/actions/locationActions";
@@ -10,13 +10,13 @@ import styles from './styles.module.css';
 import WindComponent from "./windComponent/WindComponent";
 import WeatherComponent from "./weatherComponent/WeatherComponent";
 import LocationComponent from "./locationComponent/LocationComponent";
+import SearchComponent from "./searchComponent/SearchComponent";
 
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
     const {weather, forecast} = useSelector(state => state.weatherStore);
     const {location,selectedCity} = useSelector(state => state.locationStore);
     // const {error} = useSelector(state => state.errorsStore);
-    const [city, setCity] = useState('');
 
     useEffect(() => {
             dispatch(
@@ -44,15 +44,6 @@ const CurrentWeatherComponent = () => {
         )
     }, [dispatch, weather])
 
-    const getWeatherInCity = (city) => {
-        dispatch(
-            getWeather(city, setCity)
-        )
-    }
-
-    const changeHandler = (event) => {
-        setCity(event.target.value);
-    }
 
     return(
         <div className={
@@ -64,20 +55,7 @@ const CurrentWeatherComponent = () => {
                 :
                 'mainContainer'
         }>
-        <main>
-            <div className='searchBox'>
-                <input
-                    type="text"
-                    className='searchBar'
-                    placeholder="Search..."
-                    name = "city"
-                    value={city}
-                    onChange={changeHandler}
-                    onKeyPress={(event) => {
-                        if(event.key !== "Enter") return;
-                        getWeatherInCity(city)}}
-                />
-            </div>
+                    <SearchComponent/>
                     <LocationComponent weather={weather}/>
                     <WeatherComponent weather={weather}/>
                     <WindComponent weather={weather}/>
@@ -86,8 +64,6 @@ const CurrentWeatherComponent = () => {
                     }
                     <ForecastHourlyComponent forecast={forecast}/>
                     <ForecastDailyComponent forecast={forecast}/>
-
-        </main>
         </div>
     )
 }
