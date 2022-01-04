@@ -1,0 +1,30 @@
+.weatherBox{
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.tempBox{
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 15px 25px;
+    color: #fff;
+    font-weight: 900;
+    text-shadow: 3px 6px rgba(50,50,70,0.5);
+    text-align: center;
+    box-shadow: 3px 6px rgba(0,0,0,0.2);
+}
+.temp{
+    font-size: 102px;
+}
+.tempDaily{
+    font-size: 40px;
+}
+.weather{
+    color: #fff;
+    font-size: 48px;
+    font-weight: 700;
+    text-shadow: 3px 3px rgba(50,50,70,0.5);
+}
