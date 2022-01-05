@@ -3,7 +3,6 @@ import {Container, Nav, Navbar} from "react-bootstrap";
 import styles from './styles.module.css'
 import classNames from 'classnames';
 
-
 const NavbarComponent = () => {
     return (
             <div className="NavbarComponent">
@@ -42,7 +41,5 @@ const NavbarComponent = () => {
                 </Navbar>
             </div>
     )
-
 }
-
 export default NavbarComponent;

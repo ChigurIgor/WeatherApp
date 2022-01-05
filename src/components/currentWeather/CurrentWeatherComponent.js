@@ -35,7 +35,6 @@ const CurrentWeatherComponent = () => {
                 getWeather(selectedCity)
             )
         }
-
     }, [dispatch, selectedCity, location])
 
     useEffect(() => {
@@ -43,7 +42,6 @@ const CurrentWeatherComponent = () => {
             getForecast(weather)
         )
     }, [dispatch, weather])
-
 
     return(
         <div className={

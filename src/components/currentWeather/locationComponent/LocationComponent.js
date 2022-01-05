@@ -15,29 +15,28 @@ const LocationComponent = ({weather}) => {
         <>
             {weather !== undefined &&
                 <div className={styles.locationBox}>
-                   <div className={styles.location}>{weather.name},{weather.sys.country}
-                    {!favourites.some(item => item.city === weather.name && item.country === weather.sys.country) ?
-                        <img
-                            className={styles.iconAdd}
-                            src={addToFavourite}
-                            alt='add'
-                            onClick={() => addToFavourites(weather.name, weather.sys.country)}
-                            title="Add this city to favourites"
-                        />
-                        :
-                        <img
-                            className={styles.iconAdd}
-                            src={addedToFavourite}
-                            alt='added'
-                            title="Already Added to favourites"
-                        />
-                    }
+                    <div className={styles.location}>{weather.name},{weather.sys.country}
+                        {!favourites.some(item => item.city === weather.name && item.country === weather.sys.country) ?
+                            <img
+                                className={styles.iconAdd}
+                                src={addToFavourite}
+                                alt='add'
+                                onClick={() => addToFavourites(weather.name, weather.sys.country)}
+                                title="Add this city to favourites"
+                            />
+                            :
+                            <img
+                                className={styles.iconAdd}
+                                src={addedToFavourite}
+                                alt='added'
+                                title="Already Added to favourites"
+                            />
+                        }
+                    </div>
+                    <div className={styles.date}>{new Date(weather.dt*1000).toLocaleDateString()}</div>
                 </div>
-                <div className={styles.date}>{new Date(weather.dt*1000).toLocaleDateString()}</div>
-            </div>
             }
-            </>
+        </>
     )
 }
-
 export default LocationComponent;
