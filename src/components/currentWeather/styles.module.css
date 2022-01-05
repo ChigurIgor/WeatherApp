@@ -6,3 +6,14 @@
     right: 0;
     filter: drop-shadow(5px 5px 5px #222);
 }
+
+@media (min-width: 420px) {
+    .iconWeather{
+        top: 150px;
+    }
+    .wrapper{
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+    }
+}

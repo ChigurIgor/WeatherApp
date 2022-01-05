@@ -53,15 +53,17 @@ const CurrentWeatherComponent = () => {
                 :
                 'mainContainer'
         }>
-                    <SearchComponent/>
-                    <LocationComponent weather={weather}/>
-                    <WeatherComponent weather={weather}/>
-                    <WindComponent weather={weather}/>
-                    {weather !== undefined &&
-                        <IconWeatherComponent weather={weather.weather[0]} className={styles.iconWeather}/>
-                    }
-                    <ForecastHourlyComponent forecast={forecast}/>
-                    <ForecastDailyComponent forecast={forecast}/>
+            <SearchComponent/>
+            <LocationComponent weather={weather}/>
+            <div  className={styles.wrapper}>
+                <WeatherComponent weather={weather}/>
+                <WindComponent weather={weather}/>
+            </div>
+            {weather !== undefined &&
+                <IconWeatherComponent weather={weather.weather[0]} className={styles.iconWeather}/>
+            }
+            <ForecastHourlyComponent forecast={forecast}/>
+            <ForecastDailyComponent forecast={forecast}/>
         </div>
     )
 }

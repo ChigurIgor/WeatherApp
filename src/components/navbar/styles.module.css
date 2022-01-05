@@ -21,3 +21,8 @@
     font-size: 20px;
     text-shadow: 2px 4px rgba(50,50,70,0.5);
 }
+@media (min-width: 420px) {
+    .navbar {
+        padding: 0 25px 25px 25px;
+    }
+}

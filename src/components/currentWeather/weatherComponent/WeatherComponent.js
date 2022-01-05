@@ -13,9 +13,9 @@ const WeatherComponent = ({weather}) => {
                         <div className={styles.tempDaily}>
                             {Math.round((weather.main.temp_min + ZERO_TEMPERATURE))}&#176;  {Math.round((weather.main.temp_max + ZERO_TEMPERATURE))}&#176;
                         </div>
-                    </div>
-                    <div className={styles.weather}>
-                        {weather.weather[0].main}
+                        <div className={styles.weather}>
+                            {weather.weather[0].main}
+                        </div>
                     </div>
                 </div>
             }
