@@ -67,3 +67,15 @@
 .windTitle{
     margin-top: 20px;
 }
+@media (min-width: 420px) {
+    .btn{
+        margin: 0 auto 0 auto;
+    }
+    .forecast{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .itemBox{
+        width: 7.5%;
+    }
+}

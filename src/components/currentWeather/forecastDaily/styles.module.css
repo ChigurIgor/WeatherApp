@@ -52,3 +52,18 @@
     right: 0;
     z-index: 0;
 }
+@media (min-width: 420px) {
+    .btn{
+        margin: 0 auto 25px auto;
+    }
+    .forecast{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .itemBox{
+        width: 11%;
+        margin: 0;
+
+    }
+}

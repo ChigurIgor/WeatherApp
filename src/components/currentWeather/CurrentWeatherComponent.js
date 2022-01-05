@@ -58,12 +58,14 @@ const CurrentWeatherComponent = () => {
             <div  className={styles.wrapper}>
                 <WeatherComponent weather={weather}/>
                 <WindComponent weather={weather}/>
+                <div className={styles.subWrapper}>
+                    <ForecastHourlyComponent forecast={forecast}/>
+                    <ForecastDailyComponent forecast={forecast}/>
+                </div>
             </div>
             {weather !== undefined &&
                 <IconWeatherComponent weather={weather.weather[0]} className={styles.iconWeather}/>
             }
-            <ForecastHourlyComponent forecast={forecast}/>
-            <ForecastDailyComponent forecast={forecast}/>
         </div>
     )
 }

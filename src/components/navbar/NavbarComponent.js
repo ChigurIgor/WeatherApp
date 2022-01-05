@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 const NavbarComponent = () => {
     return (
-            <div className="NavbarComponent">
+           <div className="NavbarComponent">
                 <Navbar className={styles.navbar} collapseOnSelect expand="lg" bg=""
                         variant="light" >
                     <Container>

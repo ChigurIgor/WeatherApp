@@ -9,11 +9,18 @@
 
 @media (min-width: 420px) {
     .iconWeather{
-        top: 150px;
+        top: 250px;
+        width: 400px;
+        height: 400px;
     }
     .wrapper{
         display: flex;
         justify-content: center;
+        gap: 25px;
+    }
+    .subWrapper{
+        display: flex;
+        flex-direction: column;
         gap: 25px;
     }
 }
