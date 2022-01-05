@@ -11,6 +11,9 @@
     min-height: 100vh;
     font-weight: 500;
     text-shadow: #8f8f8f 2px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mainContainer.warm{
@@ -38,4 +41,9 @@
 .listPlaceholder{
     color: white;
     font-size: 25px;
+}
+@media (min-width: 420px) {
+ .listcontainer{
+    width: 80vw;
+ }
 }
