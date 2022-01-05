@@ -11,11 +11,10 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {rootReducer} from "./redux/reducers/rootReducer";
 import thunk from "redux-thunk";
 import {Provider} from "react-redux";
-
+import {ThemeProvider} from "./ThemeProvider";
 
 const history = createBrowserHistory()
 const reduxHistoryPush = reduxHistoryPushMiddleware(history);
-
 const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(thunk, reduxHistoryPush))
@@ -23,9 +22,11 @@ const store = createStore(
 
 ReactDOM.render((
     <Provider store={store}>
-        <Router>
-             <App />
-        </Router>
+        <ThemeProvider>
+            <Router>
+                <App />
+            </Router>
+        </ThemeProvider>
     </Provider>
     ),
   document.getElementById('root'));
