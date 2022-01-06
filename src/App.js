@@ -6,16 +6,12 @@ import {
 } from "react-router-dom"
 import FavouritesComponent from "./components/favourites/FavouritesComponent";
 import CurrentWeatherComponent from "./components/currentWeather/CurrentWeatherComponent";
-import React, {useContext} from "react";
-import {ThemeContext} from "./ThemeProvider";
+import React from "react";
 
 export let globalHistory;
 
 const App = () => {
     globalHistory = useHistory();
-    const { theme, toggle, dark } = useContext(ThemeContext)
-    console.log(theme);
-    console.log(dark);
     return (
             <div className='App'>
                 <NavbarComponent/>

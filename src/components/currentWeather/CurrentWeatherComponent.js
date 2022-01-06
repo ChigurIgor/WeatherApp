@@ -1,5 +1,5 @@
 import {ZERO_TEMPERATURE} from "../../redux/constants";
-import {useEffect} from "react";
+import {useContext, useEffect} from "react";
 import {getForecast, getWeather, getWeatherInCurrentLocation} from "../../redux/actions/weatherActions";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentLocation} from "../../redux/actions/locationActions";
@@ -11,12 +11,39 @@ import WindComponent from "./windComponent/WindComponent";
 import WeatherComponent from "./weatherComponent/WeatherComponent";
 import LocationComponent from "./locationComponent/LocationComponent";
 import SearchComponent from "./searchComponent/SearchComponent";
+import {ThemeContext} from "../../ThemeProvider";
+import {Button} from "react-bootstrap";
+import classNames from "classnames";
 
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
+    const {theme, setNewTheme} = useContext(ThemeContext)
     const {weather, forecast} = useSelector(state => state.weatherStore);
     const {location,selectedCity} = useSelector(state => state.locationStore);
     // const {error} = useSelector(state => state.errorsStore);
+    let mainContainerTheme = '';
+    if(theme === 'cold') {
+        mainContainerTheme = styles.cold;
+    }
+    if(theme === 'warm') {
+        mainContainerTheme = styles.warm;
+    }
+    const setTheme = (weather) => {
+        if(weather !== undefined && weather.main !== undefined){
+            let theme = 'normal';
+            if((weather.main.temp + ZERO_TEMPERATURE) <= 0){
+                theme = 'cold';
+            }
+            if((weather.main.temp + ZERO_TEMPERATURE) >16){
+                theme = 'warm';
+            }
+            setNewTheme(theme);
+        }
+    }
+
+    useEffect(()=>{
+        setTheme(weather);
+    },[weather,setTheme])
 
     useEffect(() => {
             dispatch(
@@ -44,15 +71,7 @@ const CurrentWeatherComponent = () => {
     }, [dispatch, weather])
 
     return(
-        <div className={
-            weather !== undefined && weather.main !== undefined
-                ?
-                (weather.main.temp + ZERO_TEMPERATURE) <= 0 ? 'mainContainer cold': (
-                    (weather.main.temp + ZERO_TEMPERATURE) >16 ? 'mainContainer warm':'mainContainer'
-                )
-                :
-                'mainContainer'
-        }>
+        <div className={classNames([styles.mainContainer,mainContainerTheme])}>
             <SearchComponent/>
             <LocationComponent weather={weather}/>
             <div  className={styles.wrapper}>

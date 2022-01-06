@@ -1,34 +1,31 @@
-import React from "react";
+import React, {createContext, useState} from "react";
 
 const themes = {
-    dark: {
-        backgroundColor: 'black',
-        color: 'white'
+    normal: {
+        class: ''
     },
-    light: {
-        backgroundColor: 'white',
-        color: 'black'
+    warm: {
+        class: 'warm'
+    },
+    cold: {
+        class: 'styles.cold'
     }
 }
 const initialState = {
-    dark: false,
-    theme: themes.light,
-    toggle: () => {}
+    theme: themes.normal,
+    setNewTheme: () => {}
 }
-export const ThemeContext = React.createContext(initialState);
+export const ThemeContext = createContext(initialState);
 
 export function ThemeProvider({ children }) {
-    const [dark, setDark] = React.useState(false) // Default theme is light
+    const [theme, setTheme] = useState('normal') // Default theme is light
 
-    const toggle = () => {
-        const isDark = !dark
-        setDark(isDark)
+    const setNewTheme = (newTheme) => {
+        setTheme(newTheme)
     }
 
-    const theme = dark ? themes.dark : themes.light
-
     return (
-        <ThemeContext.Provider value={{ theme, dark, toggle }}>
+        <ThemeContext.Provider value={{theme, setNewTheme }}>
             {children}
         </ThemeContext.Provider>
     )
