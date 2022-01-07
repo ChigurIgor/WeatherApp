@@ -12,7 +12,7 @@ import classNames from "classnames";
 const FavouritesComponent = () => {
     const dispatch = useDispatch();
     const [favourites, setFavourites] = useLocalStorage('favourites', [])
-    const {theme, setNewTheme} = useContext(ThemeContext)
+    const {theme} = useContext(ThemeContext)
     let mainContainerTheme = '';
     if(theme === 'cold') {
         mainContainerTheme = styles.cold;

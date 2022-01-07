@@ -12,7 +12,6 @@ import WeatherComponent from "./weatherComponent/WeatherComponent";
 import LocationComponent from "./locationComponent/LocationComponent";
 import SearchComponent from "./searchComponent/SearchComponent";
 import {ThemeContext} from "../../ThemeProvider";
-import {Button} from "react-bootstrap";
 import classNames from "classnames";
 
 const CurrentWeatherComponent = () => {
