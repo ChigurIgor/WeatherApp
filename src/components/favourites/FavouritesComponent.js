@@ -1,4 +1,4 @@
-import {useLocalStorage} from "../../redux/hooks/LocalStorageHooks";
+import {useLocalStorage} from "../../hooks/LocalStorageHooks";
 import FavouritesItem from "./favouritesItem/FavouritesItem";
 import styles from './styles.module.css'
 import {setSelectedCity} from "../../redux/actions/actions";

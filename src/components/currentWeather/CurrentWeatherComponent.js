@@ -21,28 +21,55 @@ const CurrentWeatherComponent = () => {
     const {location,selectedCity} = useSelector(state => state.locationStore);
     // const {error} = useSelector(state => state.errorsStore);
     let mainContainerTheme = '';
-    if(theme === 'cold') {
-        mainContainerTheme = styles.cold;
-    }
-    if(theme === 'warm') {
-        mainContainerTheme = styles.warm;
-    }
-    const setTheme = (weather) => {
-        if(weather !== undefined && weather.main !== undefined){
-            let theme = 'normal';
-            if((weather.main.temp + ZERO_TEMPERATURE) <= 0){
-                theme = 'cold';
-            }
-            if((weather.main.temp + ZERO_TEMPERATURE) >16){
-                theme = 'warm';
-            }
-            setNewTheme(theme);
-        }
-    }
+     (theme === 'cold') && (mainContainerTheme = styles.cold);
+     (theme === 'warm') && (mainContainerTheme = styles.warm);
+
+    // useEffect(()=>{
+    //     if(weather && weather.main !== undefined){
+    //         const { main } = weather;
+    //         let theme;
+    //         const temp = (main.temp + ZERO_TEMPERATURE <= 0) ? (
+    //             mainContainerTheme = styles.cold,
+    //                 theme = 'cold'
+    //             ) :
+    //              (main.temp + ZERO_TEMPERATURE >16) ? (
+    //                  mainContainerTheme = styles.warm,
+    //                      theme ='warm'
+    //              ) : (theme = 'normal');
+    //         setNewTheme(theme);
+    //     }
+    // },[weather]);
 
     useEffect(()=>{
-        setTheme(weather);
-    },[weather,setTheme])
+        if( weather && weather.main !== undefined ){
+            const { main: { temp } } = weather;
+            let theme = 'normal';
+            //not working without temporary variable t
+            let t = (temp + ZERO_TEMPERATURE <= 0) &&  (theme = 'cold');
+            t = (temp + ZERO_TEMPERATURE > 16) && (theme = 'warm');
+            setNewTheme(theme);
+        }
+    },[weather, setNewTheme]);
+
+    // useEffect(()=>{
+    //     if(weather && weather.main !== undefined){
+    //         const {main:{temp}} = weather;
+    //         let theme;
+    //         switch (true){
+    //             case temp + ZERO_TEMPERATURE > 16:
+    //                 mainContainerTheme = styles.warm;
+    //                 theme = 'warm';
+    //                 break;
+    //             case temp + ZERO_TEMPERATURE <= 0:
+    //                 mainContainerTheme = styles.cold;
+    //                 theme = 'cold';
+    //                 break;
+    //             default:
+    //                 theme = 'normal';
+    //         }
+    //         setNewTheme(theme);
+    //     }
+    // },[weather]);
 
     useEffect(() => {
             dispatch(

@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import addToFavourite from "../../../assets/icons/addToFavourite.png";
 import addedToFavourite from "../../../assets/icons/addedToFavourite.png";
-import {useLocalStorage} from "../../../redux/hooks/LocalStorageHooks";
+import {useLocalStorage} from "../../../hooks/LocalStorageHooks";
 
 const LocationComponent = ({weather}) => {
     const [favourites, setFavourites] = useLocalStorage("favourites", []);
