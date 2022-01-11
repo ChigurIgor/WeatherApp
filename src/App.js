@@ -16,8 +16,8 @@ const App = () => {
             <div className='App'>
                 <NavbarComponent/>
                 <Switch >
-                    <Route path="/WeatherApp" exact component={CurrentWeatherComponent}/>
                     <Route path="/" exact component={CurrentWeatherComponent}/>
+                    <Route path="/WeatherApp" exact component={CurrentWeatherComponent}/>
                     <Route path="/favourites" component={FavouritesComponent} />
                 </Switch >
             </div>
