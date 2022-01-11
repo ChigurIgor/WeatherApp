@@ -23,12 +23,13 @@ const CurrentWeatherComponent = () => {
     // let mainContainerTheme = '';
     //  (theme === 'cold') && (mainContainerTheme = styles.cold);
     //  (theme === 'warm') && (mainContainerTheme = styles.warm);
+
     let mainContainerTheme = (theme === 'cold') ?
                     (styles.cold) : (theme === 'warm') ?
                     (styles.warm) : ('');
 
     // useEffect(()=>{
-    //     if(weather && weather.main !== undefined){
+    //     if(weather && weather.main){
     //         const { main } = weather;
     //         let theme;
     //         (main.temp + ZERO_TEMPERATURE <= 0) ?
@@ -47,7 +48,7 @@ const CurrentWeatherComponent = () => {
             setNewTheme(theme);
         }
     },[weather, setNewTheme]);
-    
+
     useEffect(() => {
             dispatch(
                 getCurrentLocation()

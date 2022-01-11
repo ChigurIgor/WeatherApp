@@ -7,19 +7,16 @@ import {goToMainPage} from "../../redux/actions/navigationActions";
 import {useContext} from "react";
 import {ThemeContext} from "../../ThemeProvider";
 import classNames from "classnames";
-// import { useCallback } from 'react';
 
 const FavouritesComponent = () => {
     const dispatch = useDispatch();
     const [favourites, setFavourites] = useLocalStorage('favourites', [])
     const {theme} = useContext(ThemeContext)
-    let mainContainerTheme = '';
-    if(theme === 'cold') {
-        mainContainerTheme = styles.cold;
-    }
-    if(theme === 'warm') {
-        mainContainerTheme = styles.warm;
-    }
+
+    let mainContainerTheme = (theme === 'cold') ?
+        (styles.cold) : (theme === 'warm') ?
+            (styles.warm) : ('');
+
     const deleteItem = (city, country) => {
         const newArr = favourites.filter(e => !(e.city === city && e.country === country));
         setFavourites(newArr);
