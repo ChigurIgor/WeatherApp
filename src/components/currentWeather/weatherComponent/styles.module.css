@@ -16,13 +16,13 @@
     text-align: center;
     box-shadow: 3px 6px rgba(0,0,0,0.2);
 }
-.temp{
+.tempStyle{
     font-size: 102px;
 }
 .tempDaily{
     font-size: 40px;
 }
-.weather{
+.weatherStyle{
     color: #fff;
     font-size: 48px;
     font-weight: 700;

@@ -6,7 +6,14 @@ import {getCurrentLocation} from "../../redux/actions/locationActions";
 import ForecastHourlyComponent from "./forecastHourly/ForecastHourlyComponent";
 import ForecastDailyComponent from "./forecastDaily/ForecastDailyComponent";
 import IconWeatherComponent from "../supportCopmonents/iconWeatherComponent/IconWeatherComponent";
-import styles from './styles.module.css';
+import {
+    cold,
+    warm,
+    wrapper,
+    subWrapper,
+    iconWeather,
+    mainContainer
+} from './styles.module.css';
 import WindComponent from "./windComponent/WindComponent";
 import WeatherComponent from "./weatherComponent/WeatherComponent";
 import LocationComponent from "./locationComponent/LocationComponent";
@@ -25,8 +32,8 @@ const CurrentWeatherComponent = () => {
     //  (theme === 'warm') && (mainContainerTheme = styles.warm);
 
     let mainContainerTheme = (theme === 'cold') ?
-                    (styles.cold) : (theme === 'warm') ?
-                    (styles.warm) : ('');
+                    (cold) : (theme === 'warm') ?
+                    (warm) : ('');
 
     // useEffect(()=>{
     //     if(weather && weather.main){
@@ -75,19 +82,19 @@ const CurrentWeatherComponent = () => {
     }, [dispatch, weather])
 
     return(
-        <div className={classNames([styles.mainContainer,mainContainerTheme])}>
+        <div className={classNames([mainContainer,mainContainerTheme])}>
             <SearchComponent/>
             <LocationComponent weather={weather}/>
-            <div  className={styles.wrapper}>
+            <div  className={wrapper}>
                 <WeatherComponent weather={weather}/>
                 <WindComponent weather={weather}/>
-                <div className={styles.subWrapper}>
+                <div className={subWrapper}>
                     <ForecastHourlyComponent forecast={forecast}/>
                     <ForecastDailyComponent forecast={forecast}/>
                 </div>
             </div>
-            {weather !== undefined &&
-                <IconWeatherComponent weather={weather.weather[0]} className={styles.iconWeather}/>
+            {weather &&
+                <IconWeatherComponent weather={weather.weather[0]} className={iconWeather}/>
             }
         </div>
     )

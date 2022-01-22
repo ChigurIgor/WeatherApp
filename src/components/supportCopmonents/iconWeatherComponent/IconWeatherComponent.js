@@ -26,6 +26,9 @@ const IconWeatherComponent = ({weather, className}) => {
         case 'Haze':
             link = iconFog
             break;
+        case 'Smoke':
+            link = iconFog
+            break;
         case 'Snow':
             link = iconSnow
             break;

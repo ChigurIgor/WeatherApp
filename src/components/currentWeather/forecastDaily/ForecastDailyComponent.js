@@ -1,6 +1,9 @@
 import {Button} from "react-bootstrap";
 import {useState} from "react";
-import styles from "./styles.module.css";
+import {
+    btn,
+    forecast
+} from "./styles.module.css";
 import ForecastDailyItemComponent from "./forecastDailyItemComponent/ForecastDailyItemComponent";
 
 const ForecastDaily = ({forecast:{daily} = {}}) =>{
@@ -10,11 +13,11 @@ const ForecastDaily = ({forecast:{daily} = {}}) =>{
         <>
             {daily &&
                 <div>
-                    <Button className={styles.btn} onClick={() => setDisableForecast(!disableForecast)}>
+                    <Button className={btn} onClick={() => setDisableForecast(!disableForecast)}>
                         {disableForecast ? 'Daily Forecast' : 'Hide Daily'}
                     </Button>
                     {!disableForecast &&
-                        <div className={styles.forecast}>
+                        <div className={forecast}>
                             {daily.map((weather) => <ForecastDailyItemComponent key = {weather.dt} weather = {weather} />
                               )
                             }

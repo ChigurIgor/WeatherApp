@@ -1,4 +1,7 @@
-import styles from './styles.module.css'
+import {
+    btn,
+    forecast
+} from './styles.module.css'
 import {Button} from "react-bootstrap";
 import {useState} from "react";
 import ForecastHourlyItemComponent from "./forecastHourlyItem/ForecastHourlyItemComponent";
@@ -12,13 +15,13 @@ const ForecastHourlyComponent = ({forecast:{hourly = []} = {} }) => {
             {hourly &&
                 <div>
                     <Button
-                        className={styles.btn}
+                        className={btn}
                         onClick={() => setDisableForecast(!disableForecast)}
                     >
                         {disableForecast ? ' Hourly Forecast' : 'Hide Hourly'}
                     </Button>
                     {!disableForecast &&
-                        <div className={styles.forecast}>
+                        <div className={forecast}>
                             {hourlyForecastForTheDay.map((weather) => <ForecastHourlyItemComponent key={weather.dt} weather = {weather}/>)
                             }
                         </div>

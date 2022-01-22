@@ -1,17 +1,18 @@
-import styles from './styles.module.css'
-const FavouritesItem = props =>{
-    const {city, country, deleteItem, selectItem} = props;
+import {itemWrapper,
+    cityName,
+    countryName,
+    btn
+} from './styles.module.css'
+const FavouritesItem = ({city, country, deleteItem, selectItem} )=>{
 
     return(
-        <div className={styles.itemWrapper}>
-            <span className={styles.cityName}>{city}/<span className={styles.countryName}>{country}</span>
+        <div className={itemWrapper}>
+            <span className={cityName}>{city}/<span className={countryName}>{country}</span>
             </span>
-            <div className={styles.btn}
-                 // onClick={() => {props.deleteItem(city, country)}}
+            <div className={btn}
                  onClick={() => selectItem(city, country)}
             >Select</div>
-            <div className={styles.btn}
-                // onClick={() => {props.deleteItem(city, country)}}
+            <div className={btn}
                  onClick={() => deleteItem(city, country)}
             >Delete</div>
         </div>

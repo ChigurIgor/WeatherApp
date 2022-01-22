@@ -1,4 +1,9 @@
-import styles from './styles.module.css';
+import {
+    locationBox,
+    location,
+    iconAdd,
+    date
+} from './styles.module.css';
 import addToFavourite from "../../../assets/icons/addToFavourite.png";
 import addedToFavourite from "../../../assets/icons/addedToFavourite.png";
 import {useLocalStorage} from "../../../hooks/LocalStorageHooks";
@@ -6,19 +11,19 @@ import {useLocalStorage} from "../../../hooks/LocalStorageHooks";
 const LocationComponent = ({weather}) => {
     const [favourites, setFavourites] = useLocalStorage("favourites", []);
 
-    const addToFavourites = (city, country) => {
-        !favourites.some(item => item.city === city && item.country === country) &&
-        setFavourites([...favourites, {city:city, country: country}])
+    const addToFavourites = (cityToAdd, countryToAdd) => {
+        !favourites.some(({city, country}) => city === cityToAdd && country === countryToAdd) &&
+        setFavourites([...favourites, {city:cityToAdd, country: countryToAdd}])
     }
 
     return (
         <>
-            {weather !== undefined &&
-                <div className={styles.locationBox}>
-                    <div className={styles.location}>{weather.name},{weather.sys.country}
-                        {!favourites.some(item => item.city === weather.name && item.country === weather.sys.country) ?
+            {weather &&
+                <div className={locationBox}>
+                    <div className={location}>{weather.name},{weather.sys.country}
+                        {!favourites.some(({city, country}) => city === weather.name && country === weather.sys.country) ?
                             <img
-                                className={styles.iconAdd}
+                                className={iconAdd}
                                 src={addToFavourite}
                                 alt='add'
                                 onClick={() => addToFavourites(weather.name, weather.sys.country)}
@@ -26,14 +31,14 @@ const LocationComponent = ({weather}) => {
                             />
                             :
                             <img
-                                className={styles.iconAdd}
+                                className={iconAdd}
                                 src={addedToFavourite}
                                 alt='added'
                                 title="Already Added to favourites"
                             />
                         }
                     </div>
-                    <div className={styles.date}>{new Date(weather.dt*1000).toLocaleDateString()}</div>
+                    <div className={date}>{new Date(weather.dt*1000).toLocaleDateString()}</div>
                 </div>
             }
         </>

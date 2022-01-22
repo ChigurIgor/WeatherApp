@@ -1,4 +1,7 @@
-import styles from './styles.module.css';
+import {
+    searchBox,
+    searchBar
+} from './styles.module.css';
 import {useState} from "react";
 import {getWeather} from "../../../redux/actions/weatherActions";
 import {useDispatch} from "react-redux";
@@ -17,10 +20,10 @@ const SearchComponent = () => {
     }
 
     return(
-        <div className={styles.searchBox}>
+        <div className={searchBox}>
             <input
                 type="text"
-                className={styles.searchBar}
+                className={searchBar}
                 placeholder="Search..."
                 name = "city"
                 value={city}

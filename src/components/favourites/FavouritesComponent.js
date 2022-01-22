@@ -1,6 +1,13 @@
 import {useLocalStorage} from "../../hooks/LocalStorageHooks";
 import FavouritesItem from "./favouritesItem/FavouritesItem";
-import styles from './styles.module.css'
+import {
+    cold,
+    warm,
+    mainContainer,
+    title,
+    listContainer,
+    listPlaceholder
+} from './styles.module.css'
 import {setSelectedCity} from "../../redux/actions/actions";
 import {useDispatch} from "react-redux";
 import {goToMainPage} from "../../redux/actions/navigationActions";
@@ -14,13 +21,12 @@ const FavouritesComponent = () => {
     const {theme} = useContext(ThemeContext)
 
     let mainContainerTheme = (theme === 'cold') ?
-        (styles.cold) : (theme === 'warm') ?
-            (styles.warm) : ('');
+        (cold) : (theme === 'warm') ?
+            (warm) : ('');
 
     const deleteItem = (city, country) => {
         const newArr = favourites.filter(e => !(e.city === city && e.country === country));
         setFavourites(newArr);
-        console.log(newArr);
     }
 
     const selectItem = (city, country) => {
@@ -31,10 +37,10 @@ const FavouritesComponent = () => {
     const renderList = (arr) => {
         return (
             <div>
-                {arr.map(item => <div key={item.city+"/"+item.country}>
+                {arr.map(({city, country}) => <div key={city+"/"+country}>
                     <FavouritesItem
-                        city={item.city}
-                        country = {item.country}
+                        city={city}
+                        country = {country}
                         deleteItem={deleteItem}
                         selectItem={selectItem}
                     />
@@ -44,14 +50,14 @@ const FavouritesComponent = () => {
     }
 
     return(
-        <div className={classNames([styles.mainContainer,mainContainerTheme])}>
-            <h3 className={styles.title}>Favourites</h3>
+        <div className={classNames([mainContainer,mainContainerTheme])}>
+            <h3 className={title}>Favourites</h3>
             {favourites !== undefined && favourites.length > 0 ?
-                <div className={styles.listContainer}>
+                <div className={listContainer}>
                     {renderList(favourites)}
                 </div>
                 :
-                <div className={styles.listPlaceholder}>
+                <div className={listPlaceholder}>
                     <p>There are no saved cities yet</p>
                 </div>
             }

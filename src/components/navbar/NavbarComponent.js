@@ -1,23 +1,24 @@
 import {Link} from "react-router-dom";
 import {Container, Nav, Navbar} from "react-bootstrap";
-import styles from './styles.module.css'
+import {navbar, meAuto, Section, toggle} from './styles.module.css'
 import classNames from 'classnames';
 
 const NavbarComponent = () => {
+
     return (
            <div className="NavbarComponent">
-                <Navbar className={styles.navbar} collapseOnSelect expand="lg" bg=""
+                <Navbar className={navbar} collapseOnSelect expand="lg" bg=""
                         variant="light" >
                     <Container>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.toggle} />
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" className={toggle} />
                         <Navbar.Collapse id="responsive-navbar-nav">
-                            <Nav className={styles.meAuto}>
+                            <Nav className={meAuto}>
                                 <Nav.Link
                                     as={Link}
                                     className = {
                                         classNames([
                                             'SectionNavigation-Item',
-                                            styles.Section
+                                            Section
                                             ]
                                         )
                                     }
@@ -28,7 +29,7 @@ const NavbarComponent = () => {
                                     className = {
                                         classNames([
                                             'SectionNavigation-Item',
-                                            styles.Section
+                                            Section
                                             ]
                                         )
                                     }
