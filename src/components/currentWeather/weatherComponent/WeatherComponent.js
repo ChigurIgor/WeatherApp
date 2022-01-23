@@ -6,8 +6,9 @@ import {
     weatherStyle
 } from './styles.module.css'
 import {ZERO_TEMPERATURE} from "../../../redux/constants";
+import _ from 'lodash';
 
-const WeatherComponent = ({weather, weather: {main, main: {temp, temp_min, temp_max} = {} } = {} }) => {
+const WeatherComponent = ({weather, weather: {main, weather: weatherForecast, main: {temp, temp_min, temp_max} = {} } = {} }) => {
 
     return (
         <>
@@ -21,7 +22,7 @@ const WeatherComponent = ({weather, weather: {main, main: {temp, temp_min, temp_
                             {Math.round((temp_min + ZERO_TEMPERATURE))}&#176;  {Math.round((temp_max + ZERO_TEMPERATURE))}&#176;
                         </div>
                         <div className={weatherStyle}>
-                            {weather.weather[0].main}
+                            {_.head(weatherForecast).main}
                         </div>
                     </div>
                 </div>

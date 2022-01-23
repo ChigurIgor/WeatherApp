@@ -9,6 +9,7 @@ import {
 import {ZERO_TEMPERATURE} from "../../../../redux/constants";
 import IconWeatherComponent from "../../../supportCopmonents/iconWeatherComponent/IconWeatherComponent";
 import arrow from "../../../../assets/icons/arrow.png";
+import _ from 'lodash';
 
 const  ForecastHourlyItemComponent = ({weather :{dt, temp, weather, wind_deg, wind_speed}} ) => {
     return(
@@ -20,7 +21,7 @@ const  ForecastHourlyItemComponent = ({weather :{dt, temp, weather, wind_deg, wi
                 {Math.round((temp + ZERO_TEMPERATURE))}&#176;
             </div>
             <div className={weatherStyle}>
-                <IconWeatherComponent weather={(weather[0])} className={iconWeather}/>
+                <IconWeatherComponent weather={_.head(weather)} className={iconWeather}/>
             </div>
             <div className='forecastHourlyWind'>
                 <img className={iconWind}

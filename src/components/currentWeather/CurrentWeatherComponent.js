@@ -20,6 +20,7 @@ import LocationComponent from "./locationComponent/LocationComponent";
 import SearchComponent from "./searchComponent/SearchComponent";
 import {ThemeContext} from "../../ThemeProvider";
 import classNames from "classnames";
+import _ from 'lodash';
 
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
@@ -27,34 +28,20 @@ const CurrentWeatherComponent = () => {
     const {weather, forecast} = useSelector(state => state.weatherStore);
     const {location,selectedCity} = useSelector(state => state.locationStore);
     // const {error} = useSelector(state => state.errorsStore);
-    // let mainContainerTheme = '';
-    //  (theme === 'cold') && (mainContainerTheme = styles.cold);
-    //  (theme === 'warm') && (mainContainerTheme = styles.warm);
-
+    const {main, weather: weatherForecast} = weather || {};
     let mainContainerTheme = (theme === 'cold') ?
                     (cold) : (theme === 'warm') ?
                     (warm) : ('');
 
-    // useEffect(()=>{
-    //     if(weather && weather.main){
-    //         const { main } = weather;
-    //         let theme;
-    //         (main.temp + ZERO_TEMPERATURE <= 0) ?
-    //             (theme = 'cold') : (main.temp + ZERO_TEMPERATURE >16) ?
-    //             (theme ='warm') : (theme = 'normal');
-    //         setNewTheme(theme);
-    //     }
-    // },[weather]);
-
     useEffect(()=>{
-        if( weather && weather.main ){
-            const { main: { temp } } = weather;
+        if( weather && main ){
+            const {temp} = main;
             let theme = 'normal';
             ((temp + ZERO_TEMPERATURE) <= 0) &&  (theme = 'cold');
             ((temp + ZERO_TEMPERATURE) > 16) && (theme = 'warm');
             setNewTheme(theme);
         }
-    },[weather, setNewTheme]);
+    },[weather, main, setNewTheme]);
 
     useEffect(() => {
             dispatch(
@@ -94,7 +81,7 @@ const CurrentWeatherComponent = () => {
                 </div>
             </div>
             {weather &&
-                <IconWeatherComponent weather={weather.weather[0]} className={iconWeather}/>
+                <IconWeatherComponent weather={_.head(weatherForecast)} className={iconWeather}/>
             }
         </div>
     )

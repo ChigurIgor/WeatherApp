@@ -14,6 +14,7 @@ import {goToMainPage} from "../../redux/actions/navigationActions";
 import {useContext} from "react";
 import {ThemeContext} from "../../ThemeProvider";
 import classNames from "classnames";
+import _ from 'lodash';
 
 const FavouritesComponent = () => {
     const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const FavouritesComponent = () => {
     return(
         <div className={classNames([mainContainer,mainContainerTheme])}>
             <h3 className={title}>Favourites</h3>
-            {favourites && favourites.length > 0 ?
+            {favourites && !_.isEmpty(favourites) ?
                 <div className={listContainer}>
                     {renderList(favourites)}
                 </div>

@@ -1,4 +1,10 @@
-import {SET_ERROR, SET_FORECAST, SET_LOCATION, SET_SELECTED_CITY, SET_WEATHER} from "../actionTypes";
+import {
+    SET_ERROR,
+    SET_FORECAST,
+    SET_LOCATION,
+    SET_SELECTED_CITY,
+    SET_WEATHER
+} from "../actionTypes";
 
 export const setErrorAction = (err) => {
     return {
