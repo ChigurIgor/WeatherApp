@@ -15,8 +15,8 @@ const SearchComponent = () => {
             getWeather(city, setCity)
         )
     }
-    const changeHandler = (event) => {
-        setCity(event.target.value);
+    const changeHandler = ({target:{value} = {} }) => {
+        setCity(value);
     }
 
     return(
@@ -28,8 +28,8 @@ const SearchComponent = () => {
                 name = "city"
                 value={city}
                 onChange={changeHandler}
-                onKeyPress={(event) => {
-                    (event.key === "Enter" && city !== '' && city !== undefined) && getWeatherInCity(city)
+                onKeyPress={({key}) => {
+                    (key === "Enter" && city ) && getWeatherInCity(city)
                     }
                 }
             />

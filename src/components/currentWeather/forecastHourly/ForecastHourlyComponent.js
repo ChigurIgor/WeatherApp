@@ -22,7 +22,7 @@ const ForecastHourlyComponent = ({forecast:{hourly = []} = {} }) => {
                     </Button>
                     {!disableForecast &&
                         <div className={forecast}>
-                            {hourlyForecastForTheDay.map((weather) => <ForecastHourlyItemComponent key={weather.dt} weather = {weather}/>)
+                            {hourlyForecastForTheDay.map((weather, i) => <ForecastHourlyItemComponent key={i} weather = {weather}/>)
                             }
                         </div>
                     }

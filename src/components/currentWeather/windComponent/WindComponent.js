@@ -9,15 +9,15 @@ import {
 import arrow from "../../../assets/icons/arrow.png";
 import compass from "../../../assets/icons/compass.png";
 
-const WindComponent = ({weather}) =>{
+const WindComponent = ({weather, weather:{main, wind:{deg, speed}= {} } = {} }) =>{
     return(
         <div className={windBox}>
-            {weather && weather.main &&
+            {weather && main &&
                 <div className={windWrapper}>
                     <div className="windDirection">
                         <img
                             className={iconWind}
-                            style={{transform: 'rotate(' + (weather.wind.deg + 90) + 'deg)'}}
+                            style={{transform: 'rotate(' + (deg + 90) + 'deg)'}}
                             src={arrow} alt='arrow'
                         />
                     </div>
@@ -29,7 +29,7 @@ const WindComponent = ({weather}) =>{
                         />
                     </div>
                     <div className={windTitle}>
-                        <p>{Math.round(weather.wind.speed)}m/s</p>
+                        <p>{Math.round(speed)}m/s</p>
                     </div>
                 </div>
             }

@@ -12,7 +12,7 @@ import arrow from "../../../../assets/icons/arrow.png";
 
 const  ForecastHourlyItemComponent = ({weather :{dt, temp, weather, wind_deg, wind_speed}} ) => {
     return(
-        <div className={itemBox} key={dt}>
+        <div className={itemBox}>
             <div className="forecastHourlyTime">
                 {new Date(dt * 1000).getHours()}:00
             </div>

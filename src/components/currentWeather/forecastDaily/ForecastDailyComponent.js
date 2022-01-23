@@ -18,7 +18,7 @@ const ForecastDaily = ({forecast:{daily} = {}}) =>{
                     </Button>
                     {!disableForecast &&
                         <div className={forecast}>
-                            {daily.map((weather) => <ForecastDailyItemComponent key = {weather.dt} weather = {weather} />
+                            {daily.map((weather, i) => <ForecastDailyItemComponent key = {i} weather = {weather} />
                               )
                             }
                         </div>

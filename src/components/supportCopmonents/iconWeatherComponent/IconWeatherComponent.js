@@ -5,9 +5,9 @@ import iconThunder from "../../../assets/icons/weatherIcons/thunder.png";
 import iconFog from "../../../assets/icons/weatherIcons/fog.png";
 import iconSnow from "../../../assets/icons/weatherIcons/snow.png";
 
-const IconWeatherComponent = ({weather, className}) => {
-    let link = "";
-    switch (weather.main){
+const IconWeatherComponent = ({weather:{main, description} = {}, className}) => {
+    let link;
+    switch (main){
         case 'Clear':
             link = iconSun
             break;
@@ -15,7 +15,7 @@ const IconWeatherComponent = ({weather, className}) => {
             link = iconClouds
             break;
         case 'Rain':
-            (weather.description === "moderate rain") ?
+            (description === "moderate rain") ?
                 link = iconRain
                 :
                 link = iconThunder

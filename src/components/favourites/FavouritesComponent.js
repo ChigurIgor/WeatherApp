@@ -24,12 +24,12 @@ const FavouritesComponent = () => {
         (cold) : (theme === 'warm') ?
             (warm) : ('');
 
-    const deleteItem = (city, country) => {
-        const newArr = favourites.filter(e => !(e.city === city && e.country === country));
+    const deleteItem = (cityToDelete, countryToDelete) => {
+        const newArr = favourites.filter(({city, country}) => !(city === cityToDelete && country === countryToDelete));
         setFavourites(newArr);
     }
 
-    const selectItem = (city, country) => {
+    const selectItem = (city) => {
         dispatch(setSelectedCity(city));
         goToMainPage();
     }
@@ -37,12 +37,12 @@ const FavouritesComponent = () => {
     const renderList = (arr) => {
         return (
             <div>
-                {arr.map(({city, country}) => <div key={city+"/"+country}>
+                {arr.map(({city, country}) => <div key = {city+"/"+country}>
                     <FavouritesItem
-                        city={city}
+                        city = {city}
                         country = {country}
-                        deleteItem={deleteItem}
-                        selectItem={selectItem}
+                        deleteItem = {deleteItem}
+                        selectItem = {selectItem}
                     />
                 </div>)}
             </div>
@@ -52,7 +52,7 @@ const FavouritesComponent = () => {
     return(
         <div className={classNames([mainContainer,mainContainerTheme])}>
             <h3 className={title}>Favourites</h3>
-            {favourites !== undefined && favourites.length > 0 ?
+            {favourites && favourites.length > 0 ?
                 <div className={listContainer}>
                     {renderList(favourites)}
                 </div>

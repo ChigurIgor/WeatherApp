@@ -8,7 +8,7 @@ import addToFavourite from "../../../assets/icons/addToFavourite.png";
 import addedToFavourite from "../../../assets/icons/addedToFavourite.png";
 import {useLocalStorage} from "../../../hooks/LocalStorageHooks";
 
-const LocationComponent = ({weather}) => {
+const LocationComponent = ({weather, weather:{name:cityName, dt ,sys:{country:countryName} = {} } = {} }) => {
     const [favourites, setFavourites] = useLocalStorage("favourites", []);
 
     const addToFavourites = (cityToAdd, countryToAdd) => {
@@ -20,13 +20,13 @@ const LocationComponent = ({weather}) => {
         <>
             {weather &&
                 <div className={locationBox}>
-                    <div className={location}>{weather.name},{weather.sys.country}
-                        {!favourites.some(({city, country}) => city === weather.name && country === weather.sys.country) ?
+                    <div className={location}>{cityName},{countryName}
+                        {!favourites.some(({city, country}) => city === cityName && country === countryName) ?
                             <img
                                 className={iconAdd}
                                 src={addToFavourite}
                                 alt='add'
-                                onClick={() => addToFavourites(weather.name, weather.sys.country)}
+                                onClick={() => addToFavourites(cityName, countryName)}
                                 title="Add this city to favourites"
                             />
                             :
@@ -38,7 +38,7 @@ const LocationComponent = ({weather}) => {
                             />
                         }
                     </div>
-                    <div className={date}>{new Date(weather.dt*1000).toLocaleDateString()}</div>
+                    <div className={date}>{new Date(dt*1000).toLocaleDateString()}</div>
                 </div>
             }
         </>
