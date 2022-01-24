@@ -27,8 +27,14 @@ const CurrentWeatherComponent = () => {
     const {theme, setNewTheme} = useContext(ThemeContext)
     const {weather, forecast} = useSelector(state => state.weatherStore);
     const {location,selectedCity} = useSelector(state => state.locationStore);
-    // const {error} = useSelector(state => state.errorsStore);
+    const {error} = useSelector(state => state.errorsStore);
     const {main, weather: weatherForecast} = weather || {};
+
+    useEffect(() =>{
+        console.log(error);
+    },
+        [error]);
+
     let mainContainerTheme = (theme === 'cold') ?
                     (cold) : (theme === 'warm') ?
                     (warm) : ('');

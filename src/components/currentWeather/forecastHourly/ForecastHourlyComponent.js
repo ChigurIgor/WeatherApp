@@ -7,10 +7,9 @@ import {useState} from "react";
 import ForecastHourlyItemComponent from "./forecastHourlyItem/ForecastHourlyItemComponent";
 import _ from 'lodash';
 
-const ForecastHourlyComponent = ({forecast:{hourly = []} = {} }) => {
+const ForecastHourlyComponent = ({forecast:{hourly} = {} }) => {
     const hourlyForecastForTheDay = _.take(hourly,24);
     const [disableForecast, setDisableForecast] = useState(true);
-
     return (
         <>
             {hourly &&

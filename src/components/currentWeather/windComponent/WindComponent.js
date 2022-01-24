@@ -11,29 +11,31 @@ import compass from "../../../assets/icons/compass.png";
 
 const WindComponent = ({weather, weather:{main, wind:{deg, speed}= {} } = {} }) =>{
     return(
-        <div className={windBox}>
+        <>
             {weather && main &&
-                <div className={windWrapper}>
-                    <div className="windDirection">
-                        <img
-                            className={iconWind}
-                            style={{transform: 'rotate(' + (deg + 90) + 'deg)'}}
-                            src={arrow} alt='arrow'
-                        />
-                    </div>
-                    <div className={windCompass}>
-                        <img
-                            className={iconCompass}
-                            src={compass}
-                            alt='compass'
-                        />
-                    </div>
-                    <div className={windTitle}>
-                        <p>{Math.round(speed)}m/s</p>
+                <div className={windBox}>
+                    <div className={windWrapper}>
+                        <div className="windDirection">
+                            <img
+                                className={iconWind}
+                                style={{transform: 'rotate(' + (deg + 90) + 'deg)'}}
+                                src={arrow} alt='arrow'
+                            />
+                        </div>
+                        <div className={windCompass}>
+                            <img
+                                className={iconCompass}
+                                src={compass}
+                                alt='compass'
+                            />
+                        </div>
+                        <div className={windTitle}>
+                            <p>{Math.round(speed)}m/s</p>
+                        </div>
                     </div>
                 </div>
             }
-        </div>
+        </>
     )
 }
 export default WindComponent;

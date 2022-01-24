@@ -1,6 +1,14 @@
 import axios from "axios";
-import {API_KEY, BASE_URL_ONE_CALL, BASE_URL_WEATHER} from "../constants";
-import {setErrorAction, setForecastAction, setWeatherAction} from "./actions";
+import {
+    API_KEY,
+    BASE_URL_ONE_CALL,
+    BASE_URL_WEATHER
+} from "../constants";
+import {
+    setErrorAction,
+    setForecastAction,
+    setWeatherAction
+} from "./actions";
 
 export const getWeather = (city) =>{
     return async dispatch => {
