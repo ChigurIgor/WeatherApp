@@ -21,6 +21,7 @@ import SearchComponent from "./searchComponent/SearchComponent";
 import {ThemeContext} from "../../ThemeProvider";
 import classNames from "classnames";
 import _ from 'lodash';
+import ErrorComponent from "../supportCopmonents/errorComponent/ErrorComponent";
 
 const CurrentWeatherComponent = () => {
     const dispatch = useDispatch();
@@ -30,10 +31,11 @@ const CurrentWeatherComponent = () => {
     const {error} = useSelector(state => state.errorsStore);
     const {main, weather: weatherForecast} = weather || {};
 
-    useEffect(() =>{
-        console.log(error);
-    },
-        [error]);
+    // useEffect(() =>{
+    //     console.log(error?.response?.data?.cod);
+    //     console.log(error?.response?.data?.message);
+    // },
+    //     [error]);
 
     let mainContainerTheme = (theme === 'cold') ?
                     (cold) : (theme === 'warm') ?
@@ -77,17 +79,23 @@ const CurrentWeatherComponent = () => {
     return(
         <div className={classNames([mainContainer,mainContainerTheme])}>
             <SearchComponent/>
-            <LocationComponent weather={weather}/>
-            <div  className={wrapper}>
-                <WeatherComponent weather={weather}/>
-                <WindComponent weather={weather}/>
-                <div className={subWrapper}>
-                    <ForecastHourlyComponent forecast={forecast}/>
-                    <ForecastDailyComponent forecast={forecast}/>
-                </div>
-            </div>
-            {weather &&
-                <IconWeatherComponent weather={_.head(weatherForecast)} className={iconWeather}/>
+            {error ?
+                <ErrorComponent message={error?.response?.data?.message} />
+                :
+                <>
+                    <LocationComponent weather={weather}/>
+                    <div  className={wrapper}>
+                        <WeatherComponent weather={weather}/>
+                        <WindComponent weather={weather}/>
+                        <div className={subWrapper}>
+                            <ForecastHourlyComponent forecast={forecast}/>
+                            <ForecastDailyComponent forecast={forecast}/>
+                        </div>
+                    </div>
+                    {weather &&
+                    <IconWeatherComponent weather={_.head(weatherForecast)} className={iconWeather}/>
+                    }
+                </>
             }
         </div>
     )
