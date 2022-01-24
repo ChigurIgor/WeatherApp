@@ -31,11 +31,6 @@ const CurrentWeatherComponent = () => {
     const {error} = useSelector(state => state.errorsStore);
     const {main, weather: weatherForecast} = weather || {};
 
-    // useEffect(() =>{
-    //     console.log(error?.response?.data?.cod);
-    //     console.log(error?.response?.data?.message);
-    // },
-    //     [error]);
 
     let mainContainerTheme = (theme === 'cold') ?
                     (cold) : (theme === 'warm') ?

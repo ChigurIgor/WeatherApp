@@ -9,10 +9,10 @@ import {
 import arrow from "../../../assets/icons/arrow.png";
 import compass from "../../../assets/icons/compass.png";
 
-const WindComponent = ({weather, weather:{main, wind:{deg, speed}= {} } = {} }) =>{
+const WindComponent = ({weather, weather:{wind:{deg, speed}= {} } = {} }) =>{
     return(
         <>
-            {weather && main &&
+            {weather?.main &&
                 <div className={windBox}>
                     <div className={windWrapper}>
                         <div className="windDirection">

@@ -11,7 +11,7 @@ import IconWeatherComponent from "../../../supportCopmonents/iconWeatherComponen
 import arrow from "../../../../assets/icons/arrow.png";
 import _ from 'lodash';
 
-const  ForecastHourlyItemComponent = ({weather :{dt, temp, weather, wind_deg, wind_speed}} ) => {
+const  ForecastHourlyItemComponent = ({weather:{dt, temp, weather, wind_deg, wind_speed}} ) => {
     return(
         <div className={itemBox}>
             <div className="forecastHourlyTime">

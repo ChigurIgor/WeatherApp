@@ -8,11 +8,11 @@ import {
 import {ZERO_TEMPERATURE} from "../../../redux/constants";
 import _ from 'lodash';
 
-const WeatherComponent = ({weather, weather: {main, weather: weatherForecast, main: {temp, temp_min, temp_max} = {} } = {} }) => {
+const WeatherComponent = ({weather, weather: {weather: weatherForecast, main: {temp, temp_min, temp_max} = {} } = {} }) => {
 
     return (
         <>
-            {weather && main &&
+            {weather?.main &&
                 <div className={weatherBox}>
                     <div className={tempBox}>
                         <div className={tempStyle}>
